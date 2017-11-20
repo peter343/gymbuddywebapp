@@ -3,21 +3,49 @@
 <p style="text-align: center;">Maybe a description</p>
 <p style="text-align: center;">&nbsp;</p>
 <p>&nbsp;</p>
-<table style="width: 376px; margin-left: auto; margin-right: auto;">
+<table border="15" style="width: 600px; height: 200px; margin-left: auto; margin-right: auto;">
 <tbody>
-<tr>
+<tr class="noBorder">
 
-<td style="width: 171.6875px; text-align: center;" bgcolor="#800000">
-  <a href="https://www.google.com">
-   <div class="item-container">
+<th style="width: 500px; text-align: center;" bgcolor="#E0E0E0">
+  <fieldset style="border-style: none; margin-top: 8;" id="inputs">
+    Log In
+    <!-- <input id="password" type="password" name="Password" placeholder="Password" required> -->
+  </fieldset>
+    <div id="login-content">
+        <form method="post" action="alert.js">
+        <!-- <form onsubmit="alert.js" method="post"> -->
+          <fieldset style="border-style: none; margin-top: 8;" id="username">
+            <input id="username" type="email" name="Email" placeholder="Your email address" required>
+            <!-- <input id="password" type="password" name="Password" placeholder="Password" required> -->
+          </fieldset>
+
+          <fieldset style="border-style: none; margin: 0;" id="password">
+            <!-- <input id="username" type="email" name="Email" placeholder="Your email address" required> -->
+            <input id="password" type="password" name="Password" placeholder="Password" required>
+          </fieldset>
+
+          <fieldset style="border-style: none;" id="actions">
+            <input type="submit" id="submitLog" value="Log in">
+            <!-- <input type="submit" id="submit" value="Create account"> -->
+          </fieldset>
+
+          <fieldset style="border-style: none;" id="actions">
+            <!-- <input type="submit" id="submit" value="Log in"> -->
+            <input type="submit" id="submitCreate" value="Create account">
+          </fieldset>
+
+        </form>
+      </div>
+   <!-- <div class="item-container">
       <p class="name"><span style="color: #ffffff;">
          Login
         </span>
       </p>
    </div>
-  </a>
-</td>
-<td style="text-align: center; width: 189.3125px;" bgcolor="#F38jso"><span style="color: #ffffff;">Create an Account</span></td>
+  </a> -->
+</th>
+<!-- <td style="text-align: center; width: 189.3125px;" bgcolor="#F38jso"><span style="color: #ffffff;">Create an Account</span></td> -->
 </tr>
 </tbody>
 </table>
