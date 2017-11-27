@@ -1,0 +1,30 @@
+<html>
+<body>
+
+
+	<div>
+	<table align="center" border="0" cellpadding="1" cellspacing="1" id="locationTable" style="width:500px;">
+		<tbody>
+			<td align="center" colspan="2">
+				Select a workout location:
+			</td>
+			<tr align="center">
+				<td><img id="myimage" src="home.png" type="image" onclick="myFunction()"/></td>
+				<td><img id="myimage" src="gym.png" type="image" onclick="myFunction()"/></td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+
+<!-- <p>This example demonstrates how to assign an "onclick" event to a p element.</p> -->
+<!-- <img id="myimage" src="gym.png" type="image" onclick="myFunction()"/> -->
+<p id="demo" onclick="myFunction()">Click me.</p>
+
+<script>
+function myFunction() {
+    document.getElementById("demo").innerHTML = "YOU CLICKED ME!";
+}
+</script>
+
+</body>
+</html>
