@@ -17,7 +17,6 @@ width:128px;height:128px;margin:0px;border-width:0px;border-color:#000000;border
 	display: grid;
 	grid-template-columns: 196px 196px 196px 196px;/*auto auto auto auto;*/
 	justify-content: center;
-	/*  background-color: #2196F3;*/
 	padding: 10px;
 	grid-gap: 50px;
 	margin-left: 10%;
@@ -37,8 +36,8 @@ width:128px;height:128px;margin:0px;border-width:0px;border-color:#000000;border
 .grid-item {
     background-color: rgba(255, 255, 255, 0.8);
     border: 1px solid rgba(0, 0, 0, 0.8);
-    padding: 1px;
-    font-size: 20px;
+    padding: 3px;
+    font-size: 15px;
     text-align: center;
     vertical-align: middle;
 }
@@ -136,7 +135,7 @@ table.workoutTable {
 		<div class="grid-item">3</div>
 		<div class="grid-item">4</div>
 	</div> -->
-</div>
+<!-- </div> -->
 
 
 <script type="text/javascript">
@@ -157,49 +156,159 @@ table.workoutTable {
 		var muscleDiv = document.getElementById('muscleDiv');
 		var muscleDivTable = document.getElementById('muscleDivTable');
 		var locType = document.getElementById('loc');
-		muscleDiv.className='sectionBar unhidden';
-		muscleDivTable.className = 'unhidden';
-		locType.title = loc;
+		if (locType.title != "" && locType.title != loc) {
+			locType.title = loc;
+			muscleDivTable.className=(muscleDivTable.className=='hidden')?'unhidden':'unhidden'; //'hidden';
+			muscleDiv.className=(muscleDiv.className=='sectionBar hidden')?'sectionBar unhidden':'sectionBar unhidden'; //'sectionBar hidden';
+			document.getElementById('workoutDiv').className='sectionBar hidden';
+			document.getElementById('workouts').innerHTML = "";
+			return;
+		} else if (locType.title != "" && locType.title == loc) {
+			return;
+		} else if (locType.title == "") {
+			locType.title = loc;
+			muscleDivTable.className=(muscleDivTable.className=='hidden')?'unhidden':'uhidden'; //'hidden';
+			muscleDiv.className=(muscleDiv.className=='sectionBar hidden')?'sectionBar unhidden':'sectionBar uhidden'; //'sectionBar hidden';
+		}
 	}
 </script>
 
 <script type="text/javascript">
+	var gridHTML = "";
+	function openGridContainer() {
+		gridHTML = "";
+		gridHTML = gridHTML.concat("</div><div class='grid-container'>");
+	}
+
+	function writeGridCell(gif, name, inten, muscles) {
+		gridHTML = gridHTML.concat("<div class='grid-cell'><div class='grid-item'>");
+		gridHTML = gridHTML.concat(gif);
+		gridHTML = gridHTML.concat("</div><div class='grid-item'>");
+		gridHTML = gridHTML.concat(name);
+		gridHTML = gridHTML.concat("</div><div class='grid-item'>");
+		gridHTML = gridHTML.concat(inten);
+		gridHTML = gridHTML.concat("</div><div class='grid-item'>");
+		gridHTML = gridHTML.concat(muscles);
+		gridHTML = gridHTML.concat("</div></div>");
+	}
+
+	function closeGridContainer() {
+		gridHTML = gridHTML.concat("</div>");
+	}
+
 	function showWorkoutsFor(group, id) {
 		var loc = document.getElementById('loc');
 		var sectionHeader = document.getElementById('workoutDiv');
 		sectionHeader.className = 'sectionBar unhidden';
 		if (loc.title == 'home') {
 			if (group == "shoulders") {
-				document.getElementById(id).innerHTML = 
-				"</div><div class='grid-container'><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div>";
+				openGridContainer();
+				writeGridCell("", "Bent-Over Rear Delt Raise", "Intermediate", "More");
+				writeGridCell("", "Side Lateral Raise", "Beginner", "More");
+				writeGridCell("", "Arnold Dumbbell Press", "Intermediate", "More");
+				writeGridCell("", "Elevated Push-Up Off Stairs", "Beginner", "More");
+				writeGridCell("", "Handstand Against Wall", "Advanced", "More");
+				// Shrugs - Beginner
+				closeGridContainer();
+				document.getElementById(id).innerHTML = gridHTML;
 			} else if (group == "chest") {
-				document.getElementById(id).innerHTML = "<p>home chest</p>";
-			} else if (group == "arms") {
-				document.getElementById(id).innerHTML = "<p>home arms</p>";
+				document.getElementById(id).innerHTML = "</div><div class='grid-container'><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div>";
+			}
+
+
+			else if (group == "arms") {
+				document.getElementById(id).innerHTML = "</div><div class='grid-container'><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div>";
 			} else if (group == "abs") {
-				document.getElementById(id).innerHTML = "<p>home abs</p>";
+				document.getElementById(id).innerHTML = "</div><div class='grid-container'><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div>";
 			} else if (group == "thighs") {
-				document.getElementById(id).innerHTML = "<p>home thighs</p>";
+				document.getElementById(id).innerHTML = "</div><div class='grid-container'><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div>";
 			} else if (group == "calves") {
-				document.getElementById(id).innerHTML = "<p>home calves</p>";
+				document.getElementById(id).innerHTML = "</div><div class='grid-container'><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div>";
 			} else {
-				document.getElementById(id).innerHTML = "<p>home fuck</p>";
+				document.getElementById(id).innerHTML = "</div><div class='grid-container'><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div>";
 			}
 		} else if (loc.title == 'gym') {
 			if (group == "shoulders") {
-				document.getElementById(id).innerHTML = "<p>gym shoulders</p>";
+				openGridContainer();
+				writeGridCell("", "Close Grip Barbell Bench Press", "Intermediate", "More");
+				writeGridCell("", "Dumbbell Shoulder Press", "Intermediate", "More");
+				writeGridCell("", "Upright Barbell Row", "Beginner", "More");
+				writeGridCell("", "Bent-Over Rear Delt Raise", "Intermediate", "More");
+				writeGridCell("", "Side Lateral Raise", "Beginner", "More");
+				writeGridCell("", "Front Cable Raise", "Beginner", "More");
+				writeGridCell("", "Upright Cable Row", "Intermediate", "More");
+				writeGridCell("", "Cable Rear Delt Fly", "Beginner", "More");
+				writeGridCell("", "Arnold Dumbbell Press", "Intermediate", "More");
+				writeGridCell("", "Elevated Push-Up Off Stairs", "Beginner", "More");
+				writeGridCell("", "Handstand Against Wall", "Advanced", "More");
+				writeGridCell("", "Machine Shoulder Press", "Beginner", "More");
+				// Shrugs - Beginner
+				closeGridContainer();
+				document.getElementById(id).innerHTML = gridHTML;
 			} else if (group == "chest") {
-				document.getElementById(id).innerHTML = "<p>gym chest</p>";
+
+				// writeGridCell("", "", "Intermediate", "More");
+				// writeGridCell("", "", "Beginner", "More");
+				// writeGridCell("", "", "Advanced", "More");
+
+				openGridContainer();
+				writeGridCell("", "Barbell Bench Press", "Intermediate", "More");
+				writeGridCell("", "Dumbbell Bench Press", "Intermediate", "More");
+				writeGridCell("", "Machine Chest Press", "Beginner", "More");
+				writeGridCell("", "Chest Dips", "Beginner", "More");
+				writeGridCell("", "Bench Cable Flies", "Beginner", "More");
+				writeGridCell("", "Dumbbell Flies", "Beginner", "More");
+				writeGridCell("", "Dumbbell Pullover", "Beginner", "More");
+				writeGridCell("", "Cable Flies", "Beginner", "More");
+				writeGridCell("", "", "Advanced", "More");
+				closeGridContainer();
+				document.getElementById(id).innerHTML = gridHTML;
+			} else if (group == "Back") {
+				// Barbell Deadlift - Intermediate
+				// Barbell Rows - Intermediate
+				// T-Bar Row - Intermediate
+				// Seted Cable Row - Beginner
+				// Lat Pull Down - Beginner
+				// Single-Arm Dumbbell Rows - Beginner
+				// Pull-ups - Beginner
+				// Back Extensions - Intermediate
 			} else if (group == "arms") {
-				document.getElementById(id).innerHTML = "<p>gym arms</p>";
+				// ---BICEPS---
+				// Standind Barbell Curls - Intermediate
+				// Preacher Curls - Intermediate
+				// Incline Dumbbell Curls - Beginner
+				// Standing Dumbbell Curls - Beginner
+				// Standing Hammer Curls - Beginner
+				// Incline Hammer Curls - Beginner
+				// Standing Cable Curls - Beginner
+				// Concentration Curls - Intermediate
+				// Overhead Cable Curls - Beginner
+				// ---TRICEPS---
+				// Closed Grip Barbell Bench Press - Intermediate
+
+				document.getElementById(id).innerHTML = "</div><div class='grid-container'><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div>";
 			} else if (group == "abs") {
-				document.getElementById(id).innerHTML = "<p>gym abs</p>";
+				document.getElementById(id).innerHTML = "</div><div class='grid-container'><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div>";
 			} else if (group == "thighs") {
-				document.getElementById(id).innerHTML = "<p>gym thighs</p>";
+				// Legs
+				// Barbell Squats - Intermediate
+				// Dumbbell Lunges - Beginner
+				// Lying Leg Curls - Beginner
+				// Leg Extensions - Beginner
+				// Standing Calf Raise - Beginner
+				// Hack Squat - Beginner
+				// Seated Calf Raise - Beginner
+				// Calf Press - Beginner
+				// Seated Leg Curl - Beginner
+
+
+
+
+				document.getElementById(id).innerHTML = "</div><div class='grid-container'><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div>";
 			} else if (group == "calves") {
-				document.getElementById(id).innerHTML = "<p>gym calves</p>";
+				document.getElementById(id).innerHTML = "</div><div class='grid-container'><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div>";
 			} else {
-				document.getElementById(id).innerHTML = "<p>gym fuck</p>";
+				document.getElementById(id).innerHTML = "</div><div class='grid-container'><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div>";
 			}
 		}
 	}
