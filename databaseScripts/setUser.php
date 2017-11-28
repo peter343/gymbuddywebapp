@@ -21,6 +21,7 @@ if ($conn->query($sql) === TRUE) {
     echo '<script language="javascript">';
     echo 'alert("User Created Successfully")';
     echo '</script>';
+    header("location: https://gymbuddyapp.net/gymBuddy/");
 } else {
     $sql = "Select name, password from user where name='$name' and password='$password2'";
     $result = $conn->query($sql);
@@ -29,11 +30,13 @@ if ($conn->query($sql) === TRUE) {
       echo '<script language="javascript">';
       echo 'alert("The username or password does not match")';
       echo '</script>';
-      $_SESSION['logged_in'] = 1;
+      header("location: https://gymbuddyapp.net/gymBuddy/");
       }else {
         echo '<script language="javascript">';
         echo 'alert("User Logged in Successfully")';
         echo '</script>';
+        $_SESSION['logged_in'] = 1;
+        header("location: https://gymbuddyapp.net/gymBuddy/selectWorkout.html");
       }
     //echo "Error: " . $sql . "<br>" . $conn->error;
 }
