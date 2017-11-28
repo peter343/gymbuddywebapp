@@ -1,29 +1,209 @@
 <html>
 <body>
+<style type="text/css" scoped>
+img.iconImage {
+width:128px;height:128px;margin:0px;border-width:0px;border-color:#000000;border-style:solid;
+}
+
+.hidden {
+	display: none;
+}
+
+.unhidden {
+	display: block;
+}
+
+.grid-container {
+	display: grid;
+	grid-template-columns: 196px 196px 196px 196px;/*auto auto auto auto;*/
+	justify-content: center;
+	/*  background-color: #2196F3;*/
+	padding: 10px;
+	grid-gap: 50px;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+.grid-cell {
+	display: grid;
+
+	grid-template-columns: 196px;
+	grid-template-rows: 196px 24px 24px 24px;
+	text-align: center;
+	vertical-align: middle;
+	/*	background-color: #2196F3;
+	*/	grid-gap: 1px;
+}
+
+.grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 1px;
+    font-size: 20px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+div.sectionBar {
+	width: 100%;
+	height: 7%;
+	background-color: #555;
+	overflow: auto;
+	text-align: center;
+	line-height: 55%;
+    font-family: Helvetica;
+    font-size: medium;
+}
+
+body {margin:0;}
+
+.sectionText {
+	color: #FFF;
+}
+
+table.workoutTable {
+	width: 100%;
+	height: 50%;
+	text-align: center;
+	vertical-align: middle;
+
+}
 
 
-	<div>
+</style>
+	<p id="loc" class="hidden" title=""></p>
+	<div class="sectionBar"><h1 class="sectionText">Choose a Workout Location:</h1>
+	</div>
+
+	<div id="locationTableDiv" class="unhidden">
 	<table align="center" border="0" cellpadding="1" cellspacing="1" id="locationTable" style="width:500px;">
 		<tbody>
-			<td align="center" colspan="2">
-				Select a workout location:
-			</td>
 			<tr align="center">
-				<td><img id="myimage" src="home.png" type="image" onclick="myFunction()"/></td>
-				<td><img id="myimage" src="gym.png" type="image" onclick="myFunction()"/></td>
+				<td><img id="myimage" src="images/home.png" type="image" onclick="javascript:showMuscleSelection('home')"/></td>
+				<td><img id="myimage" src="images/gym.png" type="image" onclick="javascript:showMuscleSelection('gym')"/></td>
 			</tr>
 		</tbody>
 	</table>
 	</div>
 
-<!-- <p>This example demonstrates how to assign an "onclick" event to a p element.</p> -->
-<!-- <img id="myimage" src="gym.png" type="image" onclick="myFunction()"/> -->
-<p id="demo" onclick="myFunction()">Click me.</p>
+	<div id="muscleDiv" class="sectionBar hidden"><h1 class="sectionText">Select a Muscle Group:</h1></div>
+	<div id="muscleDivTable" class="hidden">
+		<table align="center" border="0" cellpadding="1" cellspacing="1" id="muscleTable" style="width:1000px">
+			<tbody>
+				<!-- <td align="center" colspan="6">Select a muscle group:</td> -->
+				<tr><td align="center" colspan="6" height="20px"></td></tr>
+				<tr align="center">
+					<td><img id="myimage" src="images/shouldersS.png" type="image" onclick="javascript:showWorkoutsFor('shoulders', 'workouts')" class="iconImage"/></td>
+					<td><img id="myimage" src="images/chestS.png" type="image" onclick="javascript:showWorkoutsFor('chest', 'workouts')" class="iconImage"/></td>
+					<td><img id="myimage" src="images/armsS.png" type="image" onclick="javascript:showWorkoutsFor('arms', 'workouts')" class="iconImage"/></td>
+					<td><img id="myimage" src="images/absS.png" type="image" onclick="javascript:showWorkoutsFor('abs', 'workouts')" class="iconImage"/></td>
+					<td><img id="myimage" src="images/thighsS.png" type="image" onclick="javascript:showWorkoutsFor('thighs', 'workouts')" class="iconImage"/></td>
+					<td><img id="myimage" src="images/calvesS.png" type="image" onclick="javascript:showWorkoutsFor('calves', 'workouts')" class="iconImage"/></td>
+				</tr>
+				<tr><td align="center" colspan="6" height="20px"></td></tr>
+			</tbody>
+		</table>
+	</div>
+<div id="workoutDiv" class="sectionBar hidden"><h1 class="sectionText">Pick Your Workouts!</h1></div>
+<div id="workouts"></div>
+<!-- <div class="grid-container">
+	<div class="grid-cell">
+		<div class="grid-item">1</div>
+		<div class="grid-item">2</div>
+		<div class="grid-item">3</div>
+		<div class="grid-item">4</div>
+	</div>
+	<div class="grid-cell">
+		<div class="grid-item">1</div>
+		<div class="grid-item">2</div>
+		<div class="grid-item">3</div>
+		<div class="grid-item">4</div>
+	</div>
+	<div class="grid-cell">
+		<div class="grid-item">1</div>
+		<div class="grid-item">2</div>
+		<div class="grid-item">3</div>
+		<div class="grid-item">4</div>
+	</div>
+	<div class="grid-cell">
+		<div class="grid-item">1</div>
+		<div class="grid-item">2</div>
+		<div class="grid-item">3</div>
+		<div class="grid-item">4</div>
+	</div>
+	<div class="grid-cell">
+		<div class="grid-item">1</div>
+		<div class="grid-item">2</div>
+		<div class="grid-item">3</div>
+		<div class="grid-item">4</div>
+	</div> -->
+</div>
 
-<script>
-function myFunction() {
-    document.getElementById("demo").innerHTML = "YOU CLICKED ME!";
-}
+
+<script type="text/javascript">
+    function unhide(divID, otherDivId) {
+    	var div1 = document.getElementById(divID);
+    	var div2 = document.getElementById(otherDivId);
+    	if (div1) {
+            div1.className=(div1.className=='hidden')?'unhidden':'hidden';
+        }
+    	if (div2) {
+        	document.getElementById(otherDivId).className = 'hidden';
+    	}
+    }
+</script>
+
+<script type="text/javascript">
+	function showMuscleSelection(loc) {
+		var muscleDiv = document.getElementById('muscleDiv');
+		var muscleDivTable = document.getElementById('muscleDivTable');
+		var locType = document.getElementById('loc');
+		muscleDiv.className='sectionBar unhidden';
+		muscleDivTable.className = 'unhidden';
+		locType.title = loc;
+	}
+</script>
+
+<script type="text/javascript">
+	function showWorkoutsFor(group, id) {
+		var loc = document.getElementById('loc');
+		var sectionHeader = document.getElementById('workoutDiv');
+		sectionHeader.className = 'sectionBar unhidden';
+		if (loc.title == 'home') {
+			if (group == "shoulders") {
+				document.getElementById(id).innerHTML = 
+				"</div><div class='grid-container'><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div>";
+			} else if (group == "chest") {
+				document.getElementById(id).innerHTML = "<p>home chest</p>";
+			} else if (group == "arms") {
+				document.getElementById(id).innerHTML = "<p>home arms</p>";
+			} else if (group == "abs") {
+				document.getElementById(id).innerHTML = "<p>home abs</p>";
+			} else if (group == "thighs") {
+				document.getElementById(id).innerHTML = "<p>home thighs</p>";
+			} else if (group == "calves") {
+				document.getElementById(id).innerHTML = "<p>home calves</p>";
+			} else {
+				document.getElementById(id).innerHTML = "<p>home fuck</p>";
+			}
+		} else if (loc.title == 'gym') {
+			if (group == "shoulders") {
+				document.getElementById(id).innerHTML = "<p>gym shoulders</p>";
+			} else if (group == "chest") {
+				document.getElementById(id).innerHTML = "<p>gym chest</p>";
+			} else if (group == "arms") {
+				document.getElementById(id).innerHTML = "<p>gym arms</p>";
+			} else if (group == "abs") {
+				document.getElementById(id).innerHTML = "<p>gym abs</p>";
+			} else if (group == "thighs") {
+				document.getElementById(id).innerHTML = "<p>gym thighs</p>";
+			} else if (group == "calves") {
+				document.getElementById(id).innerHTML = "<p>gym calves</p>";
+			} else {
+				document.getElementById(id).innerHTML = "<p>gym fuck</p>";
+			}
+		}
+	}
+
 </script>
 
 </body>
