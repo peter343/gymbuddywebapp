@@ -18,25 +18,26 @@ $sql = "INSERT INTO user (name, password)
 VALUES ('$name', '$password2')";
 
 if ($conn->query($sql) === TRUE) {
-    echo '<script language="javascript">';
-    echo 'alert("User Created Successfully")';
-    echo '</script>';
-    header("location: https://gymbuddyapp.net/gymBuddy/");
+    echo "<script>
+    alert('User Created Successfully');
+    window.location.href='https://gymbuddyapp.net/gymBuddy/';
+    </script>";
 } else {
     $sql = "Select name, password from user where name='$name' and password='$password2'";
     $result = $conn->query($sql);
     if(!$result || $result->num_rows <= 0)
     {
-      echo '<script language="javascript">';
-      echo 'alert("The username or password does not match")';
-      echo '</script>';
-      header("location: https://gymbuddyapp.net/gymBuddy/");
+      echo "<script>
+      alert('The username or password does not match');
+      window.location.href='https://gymbuddyapp.net/gymBuddy/';
+      </script>";
       }else {
-        echo '<script language="javascript">';
-        echo 'alert("User Logged in Successfully")';
-        echo '</script>';
+        //header("location: https://gymbuddyapp.net/gymBuddy/selectWorkout.html");
+        echo "<script>
+        alert('logged in Successfully');
+        window.location.href='https://gymbuddyapp.net/gymBuddy/selectWorkout.html';
+        </script>";
         $_SESSION['logged_in'] = 1;
-        header("location: https://gymbuddyapp.net/gymBuddy/selectWorkout.html");
       }
     //echo "Error: " . $sql . "<br>" . $conn->error;
 }
