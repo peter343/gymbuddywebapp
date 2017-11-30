@@ -305,12 +305,12 @@ table.workoutTable {
 		if (loc.title == 'home') {
 			if (group == "shoulders") {
 				openGridContainer();
-				writeGridCell("", "Side Lateral Raise", "Beginner", "This is a really long section of text and it is<br/> a test");
-				writeGridCell("", "Shoulder Shrugs", "Beginner", "More");
-				writeGridCell("", "Bent-Over Rear Delt Raise", "Intermediate", "More");
-				writeGridCell("", "Arnold Dumbbell Press", "Intermediate", "More");
-				writeGridCell("", "Elevated Push-Up Off Stairs", "Intermediate", "More");
-				writeGridCell("", "Handstand Against Wall", "Advanced", "More");
+				writeGridCell("", "Side Lateral Raise", "Beginner", "Equipment: Dumbbells<br/>Muscles targeted: Deltoid, Trapezius");
+				writeGridCell("", "Shoulder Shrugs", "Beginner", "Equipment: Dumbbells<br/>Muscles targeted: Trapezius");
+				writeGridCell("", "Bent-Over Rear Delt Raise", "Intermediate", "Equipment: Dumbbells<br/>Muscles targeted: Deltoid, Trapezius");
+				writeGridCell("", "Arnold Dumbbell Press", "Intermediate", "Equipment: Dumbbells<br/>Muscles targeted: Deltoid");
+				writeGridCell("", "Elevated Push-Up Off Stairs", "Intermediate", "Equipment: None<br/>Muscles targeted: Deltoid, Chest, Triceps");
+				writeGridCell("", "Handstand Against Wall", "Advanced", "Equipment: None<br/>Muscles targeted: Deltoid, Chest, Triceps");
 				closeGridContainer();
 				document.getElementById(id).innerHTML = gridHTML;
 			} else if (group == "chest") {
