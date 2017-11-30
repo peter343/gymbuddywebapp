@@ -225,6 +225,7 @@ table.workoutTable {
 <div id="workoutDiv" class="sectionBar hidden" style="margin-bottom: 30"><h1 class="sectionText">Pick Your Workouts!</h1></div>
 <div id="workouts" style="margin-bottom: 140"></div>
 
+<p id="testAdding"></p>
 <script type="text/javascript">
     function unhide(divID, otherDivId) {
     	var div1 = document.getElementById(divID);
@@ -272,7 +273,9 @@ table.workoutTable {
 		gridHTML = gridHTML.concat("<div class='grid-item-title'>");
 		gridHTML = gridHTML.concat(name);
 		// gridHTML = gridHTML.concat(gif);
-		gridHTML = gridHTML.concat("</div><div class='grid-item'>");
+		gridHTML = gridHTML.concat("</div><div class='grid-item' onclick=\"javascript:addRemoveWorkout('");
+		gridHTML = gridHTML.concat(name);
+		gridHTML = gridHTML.concat("')\">");
 		gridHTML = gridHTML.concat(gif);
 		// gridHTML = gridHTML.concat(name);
 		if (inten == "Beginner") {
@@ -467,6 +470,22 @@ table.workoutTable {
 				document.getElementById(id).innerHTML = "</div><div class='grid-container'><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div><div class='grid-cell'><div class='grid-item'>1</div><div class='grid-item'>2</div><div class='grid-item'>3</div><div class='grid-item'>4</div></div>";
 			}
 		}
+	}
+
+</script>
+
+<script type="text/javascript">
+	var selectedWorkouts = "";
+
+	function addRemoveWorkout(workout) {
+		if (selectedWorkouts == "") {
+			selectedWorkouts = workout.concat("^");
+		} else if (selectedWorkouts.indexOf(workout) != -1) {
+			selectedWorkouts = selectedWorkouts.replace(workout.concat("^"), "");
+		} else {
+			selectedWorkouts = selectedWorkouts.concat(workout.concat("^"));
+		}
+		document.getElementById("testAdding").innerHTML = selectedWorkouts;
 	}
 
 </script>
