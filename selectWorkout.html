@@ -223,7 +223,7 @@ table.workoutTable {
 		</table>
 	</div>
 <div id="workoutDiv" class="sectionBar hidden" style="margin-bottom: 30"><h1 class="sectionText">Pick Your Workouts!</h1></div>
-<div id="workouts" style="margin-bottom: 30"></div>
+<div id="workouts" style="margin-bottom: 140"></div>
 
 <script type="text/javascript">
     function unhide(divID, otherDivId) {
@@ -305,61 +305,61 @@ table.workoutTable {
 		if (loc.title == 'home') {
 			if (group == "shoulders") {
 				openGridContainer();
-				writeGridCell("", "Side Lateral Raise", "Beginner", "Equipment: Dumbbells<br/>Muscles targeted: Deltoid, Trapezius");
-				writeGridCell("", "Shoulder Shrugs", "Beginner", "Equipment: Dumbbells<br/>Muscles targeted: Trapezius");
-				writeGridCell("", "Bent-Over Rear Delt Raise", "Intermediate", "Equipment: Dumbbells<br/>Muscles targeted: Deltoid, Trapezius");
-				writeGridCell("", "Arnold Dumbbell Press", "Intermediate", "Equipment: Dumbbells<br/>Muscles targeted: Deltoid");
-				writeGridCell("", "Elevated Push-Up Off Stairs", "Intermediate", "Equipment: None<br/>Muscles targeted: Deltoid, Chest, Triceps");
-				writeGridCell("", "Handstand Against Wall", "Advanced", "Equipment: None<br/>Muscles targeted: Deltoid, Chest, Triceps");
+				writeGridCell("", "Side Lateral Raise", "Beginner", "Equipment: Dumbbells<br/><br/>Muscles Targeted: Deltoid, Trapezius");
+				writeGridCell("", "Shoulder Shrugs", "Beginner", "Equipment: Dumbbells<br/><br/>Muscles Targeted: Trapezius");
+				writeGridCell("", "Bent-Over Rear Delt Raise", "Intermediate", "Equipment: Dumbbells<br/><br/>Muscles Targeted: Deltoid, Trapezius");
+				writeGridCell("", "Arnold Dumbbell Press", "Intermediate", "Equipment: Dumbbells<br/><br/>Muscles Targeted: Deltoid");
+				writeGridCell("", "Elevated Push-Up Off Stairs", "Intermediate", "Equipment: None<br/><br/>Muscles Targeted: Deltoid, Upper Chest, Triceps");
+				writeGridCell("", "Wall Handstand Push-Up", "Advanced", "Equipment: None<br/><br/>Muscles Targeted: Deltoid, Chest, Triceps");
 				closeGridContainer();
 				document.getElementById(id).innerHTML = gridHTML;
 			} else if (group == "chest") {
 				openGridContainer();
-				writeGridCell("", "Wide Grip Push-ups", "Beginner", "More");
-				writeGridCell("", "Close Grip Push-ups", "Beginner", "More");
-				writeGridCell("", "Clap Push-ups", "Intermediate", "More");
-				writeGridCell("", "Elevated Push-Up Off Stairs", "Intermediate", "More");
-				writeGridCell("", "One-Arm Push-ups", "Advanced", "More");
+				writeGridCell("", "Wide Grip Push-ups", "Beginner", "Equipment: None<br/><br/>Muscles Targeted: Chest, Triceps, Shoulders");
+				writeGridCell("", "Close Grip Push-ups", "Beginner", "Equipment: None<br/><br/>Muscles Targeted: Chest, Triceps, Shoulders");
+				writeGridCell("", "Clap Push-ups", "Intermediate", "Equipment: None<br/><br/>Muscles Targeted: Chest, Triceps, Shoulders");
+				writeGridCell("", "Elevated Push-Up Off Stairs", "Intermediate", "Equipment: None<br/><br/>Muscles Targeted: Upper Chest, Triceps, Shoulders");
+				writeGridCell("", "One-Arm Push-ups", "Advanced", "Equipment: None<br/><br/>Muscles Targeted: Chest, Triceps, Shoulders");
 				closeGridContainer();
 				document.getElementById(id).innerHTML = gridHTML;
 			} else if (group == "biceps") {
 				openGridContainer();
-				writeGridCell("", "Chin-ups", "Beginner", "More");
-				writeGridCell("", "Pull-ups", "Intermediate", "More");
+				writeGridCell("", "Chin-ups", "Beginner", "Equipment: Pull Up Bar<br/><br/>Muscles Targeted: Biceps, Back");
+				writeGridCell("", "Pull-ups", "Intermediate", "Equipment: Pull Up Bar<br/><br/>Muscles Targeted: Biceps, Back");
 				closeGridContainer();
 				document.getElementById(id).innerHTML = gridHTML;
 			} else if (group == "triceps") {
 				openGridContainer();
-				writeGridCell("", "Dips", "Beginner", "More");
-				writeGridCell("", "Bench Dips", "Beginner", "More");
-				writeGridCell("", "Close Grip Push-ups", "Beginner", "More");
+				writeGridCell("", "Dips", "Beginner", "Equipment: Chairs/Stools<br/><br/>Muscles Targeted: Triceps, Chest");
+				writeGridCell("", "Bench Dips", "Beginner", "Equipment: Bench/Chair<br/><br/>Muscles Targeted: Triceps, Chest, Shoulders");
+				writeGridCell("", "Close Grip Push-ups", "Beginner", "Equipment: None<br/><br/>Muscles Targeted: Triceps, Chest");
 				closeGridContainer();
 				document.getElementById(id).innerHTML = gridHTML;
 			} else if (group == "back") {
 				openGridContainer();
-				writeGridCell("", "Superman", "Beginner", "More");
-				writeGridCell("", "Hyperextensions", "Beginner", "More");
-				writeGridCell("", "Pull-ups", "Intermediate", "More");
+				writeGridCell("", "Superman", "Beginner", "Equipment: None<br/><br/>Muscles Targeted: Back");
+				writeGridCell("", "Hyperextensions", "Beginner", "Equipment: Bench/Sofa, Partner<br/><br/>Muscles Targeted: Lower Back");
+				writeGridCell("", "Pull-ups", "Intermediate", "Equipment: Pull Up Bar<br/><br/>Muscles Targeted: Biceps, Back");
 				closeGridContainer();
 				document.getElementById(id).innerHTML = gridHTML;
 			} else if (group == "abs") {
 				openGridContainer();
-				writeGridCell("", "Flutter Kicks", "Beginner", "More");
-				writeGridCell("", "Plank", "Beginner", "More");
-				writeGridCell("", "Cross-Body Crunch", "Beginner", "More");
-				writeGridCell("", "Russian Twist", "Beginner", "More");
-				writeGridCell("", "Crunch", "Beginner", "More");
+				writeGridCell("", "Flutter Kicks", "Beginner", "Equipment: None<br/><br/>Muscles Targeted: Lower Abs");
+				writeGridCell("", "Plank", "Beginner", "Equipment: None<br/><br/>Muscles Targeted: Abs");
+				writeGridCell("", "Cross-Body Crunch", "Beginner", "Equipment: None<br/><br/>Muscles Targeted: Abs, Obliques");
+				writeGridCell("", "Russian Twist", "Beginner", "Equipment: None<br/><br/>Muscles Targeted: Abs, Obliques");
+				writeGridCell("", "Crunch", "Beginner", "Equipment: None<br/><br/>Muscles Targeted: Abs");
 				closeGridContainer();
 				document.getElementById(id).innerHTML = gridHTML;
 			} else if (group == "legs") {
 				openGridContainer();
-				writeGridCell("", "Bodyweight Lunges", "Beginner", "More");
-				writeGridCell("", "Bodyweight Squats", "Beginner", "More");
-				writeGridCell("", "Jump Squats", "Beginner", "More");
-				writeGridCell("", "Bench Jump ", "Beginner", "More");
-				writeGridCell("", "Wall Squat", "Beginner", "More");
-				writeGridCell("", "Standing Calf Raises", "Beginner", "More");
-				writeGridCell("", "Burpies", "Intermediate", "More");
+				writeGridCell("", "Bodyweight Lunges", "Beginner", "Equipment: None<br/><br/>Muscles Targeted: Hamstrings, Quads, Glutes");
+				writeGridCell("", "Bodyweight Squats", "Beginner", "Equipment: None<br/><br/>Muscles Targeted: Hamstrings, Quads, Glutes");
+				writeGridCell("", "Wall Squat", "Beginner", "Equipment: None<br/><br/>Muscles Targeted: Quads, Glutes, Calves");
+				writeGridCell("", "Standing Calf Raises", "Beginner", "Equipment: None<br/><br/>Muscles Targeted: Calves");
+				writeGridCell("", "Jump Squats", "Intermediate", "Equipment: None<br/><br/>Muscles Targeted: Hamstrings, Quads, Glutes");
+				writeGridCell("", "Box Jump ", "Intermediate", "Equipment: None<br/><br/>Muscles Targeted: Hamstrings, Quads, Glutes, Calves");
+				writeGridCell("", "Burpees", "Intermediate", "Equipment: None<br/><br/>Muscles Targeted: Hamstrings, Quads, Glutes, Chest, Arms, Abs");
 				closeGridContainer();
 				document.getElementById(id).innerHTML = gridHTML;
 			}  else {
@@ -368,98 +368,99 @@ table.workoutTable {
 		} else if (loc.title == 'gym') {
 			if (group == "shoulders") {
 				openGridContainer();
-				writeGridCell("", "Upright Barbell Row", "Beginner", "More");
-				writeGridCell("", "Side Lateral Raise", "Beginner", "More");
-				writeGridCell("", "Front Cable Raise", "Beginner", "More");
-				writeGridCell("", "Cable Rear Delt Fly", "Beginner", "More");
-				writeGridCell("", "Elevated Push-Up Off Stairs", "Beginner", "More");
-				writeGridCell("", "Machine Shoulder Press", "Beginner", "More");
-				writeGridCell("", "Shoulder Shrugs", "Beginner", "More");
-				writeGridCell("", "Close Grip Barbell Press", "Intermediate", "More");
-				writeGridCell("", "Dumbbell Shoulder Press", "Intermediate", "More");
-				writeGridCell("", "Bent-Over Rear Delt Raise", "Intermediate", "More");
-				writeGridCell("", "Upright Cable Row", "Intermediate", "More");
-				writeGridCell("", "Arnold Dumbbell Press", "Intermediate", "More");
-				writeGridCell("", "Handstand Against Wall", "Advanced", "More");
+				writeGridCell("", "Upright Barbell Row", "Beginner", "Equipment: Barbell<br/><br/>Muscles Targeted: Deltoid, Trapezius");
+				writeGridCell("", "Side Lateral Raise", "Beginner", "Equipment: Dumbbells<br/><br/>Muscles Targeted: Deltoid, Trapezius");
+				writeGridCell("", "Front Cable Raise", "Beginner", "Equipment: Cables<br/><br/>Muscles Targeted: Deltoid, Trapezius");
+				writeGridCell("", "Cable Rear Delt Fly", "Beginner", "Equipment: Cable<br/><br/>Muscles Targeted: Posterior Deltoid");
+				writeGridCell("", "Elevated Push-Up Off Stairs", "Beginner", "Equipment: None<br/><br/>Muscles Targeted: Upper Chest, Triceps, Shoulders");
+				writeGridCell("", "Machine Shoulder Press", "Beginner", "Equipment: Machine<br/><br/>Muscles Targeted: Deltoid, Upper Chest, Triceps");
+				writeGridCell("", "Shoulder Shrugs", "Beginner", "Equipment: Dumbbells<br/><br/>Muscles Targeted: Trapezius");
+				writeGridCell("", "Dumbbell Shoulder Press", "Intermediate", "Equipment: Dumbbells, Bench<br/><br/>Muscles Targeted: Deltoid, Upper Chest, Triceps");
+				writeGridCell("", "Bent-Over Rear Delt Raise", "Intermediate", "Equipment: Dumbbells, Bench<br/><br/>Muscles Targeted: Deltoid, Trapezius");
+				writeGridCell("", "Upright Cable Row", "Intermediate", "Equipment: Cables<br/><br/>Muscles Targeted: Deltoid, Trapezius");
+				writeGridCell("", "Arnold Dumbbell Press", "Intermediate", "Equipment: Dumbbells, Bench<br/><br/>Muscles Targeted: Deltoid");
+				writeGridCell("", "Wall Handstand Push-Up", "Advanced", "Equipment: None<br/><br/>Muscles Targeted: Deltoid, Chest, Triceps");
 				closeGridContainer();
 				document.getElementById(id).innerHTML = gridHTML;
 			} else if (group == "chest") {
 				openGridContainer();
-				writeGridCell("", "Machine Chest Press", "Beginner", "More");
-				writeGridCell("", "Chest Dips", "Beginner", "More");
-				writeGridCell("", "Bench Cable Flies", "Beginner", "More");
-				writeGridCell("", "Dumbbell Flies", "Beginner", "More");
-				writeGridCell("", "Dumbbell Pullover", "Beginner", "More");
-				writeGridCell("", "Cable Flies", "Beginner", "More");
-				writeGridCell("", "Barbell Bench Press", "Intermediate", "More");
-				writeGridCell("", "Dumbbell Bench Press", "Intermediate", "More");
+				writeGridCell("", "Machine Chest Press", "Beginner", "Equipment: Machine<br/><br/>Muscles Targeted: Chest, Triceps, Shoulders<br/><br/>Variations: Flat, Incline, Decline");
+				writeGridCell("", "Chest Dips", "Beginner", "Equipment: Dip Station<br/><br/>Muscles Targeted: Chest, Triceps, Shoulders");
+				writeGridCell("", "Bench Cable Flies", "Beginner", "Equipment: Cables, Bench<br/><br/>Muscles Targeted: Chest, Triceps, Shoulders");
+				writeGridCell("", "Dumbbell Flies", "Beginner", "Equipment: Dumbbells, Bench<br/><br/>Muscles Targeted: Chest, Triceps, Shoulders<br/><br/>Variations: Flat, Incline, Decline");
+				writeGridCell("", "Dumbbell Pullover", "Beginner", "Equipment: Dumbbell, Bench<br/><br/>Muscles Targeted: Chest, Triceps, Shoulders");
+				writeGridCell("", "Cable Flies", "Beginner", "Equipment: Cables<br/><br/>Muscles Targeted: Chest, Triceps, Shoulders<br/><br/>Variations: Low Pulley, High Pulley");
+				writeGridCell("", "Barbell Bench Press", "Intermediate", "Equipment: Barbell, Bench<br/><br/>Muscles Targeted: Chest, Triceps, Shoulders<br/><br/>Variations: Flat, Incline, Decline");
+				writeGridCell("", "Dumbbell Bench Press", "Intermediate", "Equipment: Dumbbells, Bench<br/><br/>Muscles Targeted: Chest, Triceps, Shoulders<br/><br/>Variations: Flat, Incline, Decline");
 				closeGridContainer();
 				document.getElementById(id).innerHTML = gridHTML;
 			} else if (group == "back") {
 				openGridContainer();
-				writeGridCell("", "Seated Cable Row", "Beginner", "More");
-				writeGridCell("", "Lat Pull Down", "Beginner", "More");
-				writeGridCell("", "Single-Arm Dumbbell Rows", "Beginner", "More");
-				writeGridCell("", "Pull-ups", "Beginner", "More");
-				writeGridCell("", "Barbell Deadlift", "Intermediate", "More");
-				writeGridCell("", "Barbell Rows", "Intermediate", "More");
-				writeGridCell("", "T-Bar Row", "Intermediate", "More");
-				writeGridCell("", "Back Extensions", "Intermediate", "More");
+				writeGridCell("", "Seated Cable Row", "Beginner", "Equipment: Machine<br/><br/>Muscles Targeted: Middle Back, Lats, Biceps");
+				writeGridCell("", "Lat Pull Down", "Beginner", "Equipment: Machine<br/><br/>Muscles Targeted: Lats, Biceps");
+				writeGridCell("", "Single-Arm Dumbbell Rows", "Beginner", "Equipment: Dumbbell, Bench<br/><br/>Muscles Targeted: Middle Back, Lats, Biceps");
+				writeGridCell("", "Pull-ups", "Beginner", "Equipment: Pull-Up Bar<br/><br/>Muscles Targeted: Lats, Biceps");
+				writeGridCell("", "Barbell Deadlift", "Intermediate", "Equipment: Barbell<br/><br/>Muscles Targeted: Back, Legs, Glutes");
+				writeGridCell("", "Barbell Rows", "Intermediate", "Equipment: Barbell<br/><br/>Muscles Targeted: Lats, Middle Back, Biceps");
+				writeGridCell("", "T-Bar Row", "Intermediate", "Equipment: Barbell<br/><br/>Muscles Targeted: Middle Back, Biceps");
+				writeGridCell("", "Back Extensions", "Intermediate", "Equipment: Extensions Bench/Machine<br/><br/>Muscles Targeted: Lower Back");
 				closeGridContainer();
 				document.getElementById(id).innerHTML = gridHTML;
 			} else if (group == "biceps") {
 				openGridContainer();
-				writeGridCell("", "Incline Dumbbell Curls", "Beginner", "More");
-				writeGridCell("", "Standing Dumbbell Curls", "Beginner", "More");
-				writeGridCell("", "Standing Hammer Curls", "Beginner", "More");
-				writeGridCell("", "Incline Hammer Curls", "Beginner", "More");
-				writeGridCell("", "Standing Cable Curls", "Beginner", "More");
-				writeGridCell("", "Overhead Cable Curls", "Beginner", "More");
-				writeGridCell("", "Standind Barbell Curls", "Intermediate", "More");
-				writeGridCell("", "Preacher Curls", "Intermediate", "More");
-				writeGridCell("", "Concentration Curls", "Intermediate", "More");
+				writeGridCell("", "Incline Dumbbell Curls", "Beginner", "Equipment: Dumbbells, Bench<br/><br/>Muscles Targeted: Biceps");
+				writeGridCell("", "Standing Dumbbell Curls", "Beginner", "Equipment: Dumbbells<br/><br/>Muscles Targeted: Biceps");
+				writeGridCell("", "Standing Hammer Curls", "Beginner", "Equipment: Dumbbells<br/><br/>Muscles Targeted: Biceps");
+				writeGridCell("", "Incline Hammer Curls", "Beginner", "Equipment: Dumbbells, Bench<br/><br/>Muscles Targeted: Biceps");
+				writeGridCell("", "Standing Cable Curls", "Beginner", "Equipment: Cables<br/><br/>Muscles Targeted: Biceps");
+				writeGridCell("", "Overhead Cable Curls", "Beginner", "Equipment: Cables<br/><br/>Muscles Targeted: Biceps");
+				writeGridCell("", "Chin-ups", "Beginner", "Equipment: Pull Up Bar<br/><br/>Muscles Targeted: Biceps, Back");
+				writeGridCell("", "Pull-ups", "Intermediate", "Equipment: Pull Up Bar<br/><br/>Muscles Targeted: Biceps, Back");
+				writeGridCell("", "Standind Barbell Curls", "Intermediate", "Equipment:Barbell<br/><br/>Muscles Targeted: Biceps");
+				writeGridCell("", "Preacher Curls", "Intermediate", "Equipment: Dumbbells/Bar, Preacher Bench<br/><br/>Muscles Targeted: Biceps");
+				writeGridCell("", "Concentration Curls", "Intermediate", "Equipment: Dumbbell, Bench<br/><br/>Muscles Targeted: Biceps");
 				closeGridContainer();
 				document.getElementById(id).innerHTML = gridHTML;
 			} else if (group == "triceps") {
 				openGridContainer();
-				writeGridCell("", "Dip Machine", "Beginner", "More");
-				writeGridCell("", "Triceps Push Down", "Beginner", "More");
-				writeGridCell("", "Dips", "Beginner", "More");
-				writeGridCell("", "Bench Dips", "Beginner", "More");
-				writeGridCell("", "Dumbbell Kickbacks", "Beginner", "More");
-				writeGridCell("", "One-Arm Overhead Extension", "Beginner", "More");
-				writeGridCell("", "Close Grip Barbell Press", "Intermediate", "More");
-				writeGridCell("", "EZ-Bar Skullcrusher", "Intermediate", "More");
-				writeGridCell("", "Dumbbell Skullcrusher", "Intermediate", "More");
+				writeGridCell("", "Dip Machine", "Beginner", "Equipment: Machine<br/><br/>Muscles Targeted: Triceps, Chest");
+				writeGridCell("", "Bench Dips", "Beginner", "Equipment: Bench<br/><br/>Muscles Targeted: Triceps, Chest, Shoulders");
+				writeGridCell("", "Dips", "Beginner", "Equipment: Dip Station<br/><br/>Muscles Targeted: Triceps, Chest");
+				writeGridCell("", "Dumbbell Kickbacks", "Beginner", "Equipment: Bench<br/><br/>Muscles Targeted: Triceps<br/><br/>Variations: Dumbbell, Cable");
+				writeGridCell("", "Triceps Push Down", "Beginner", "Equipment: Chairs/Stools<br/><br/>Muscles Targeted: Triceps<br/><br/>Variations: Rope, Bar, V-Bar");
+				writeGridCell("", "One-Arm Overhead Extension", "Beginner", "Equipment: Dumbbell<br/><br/>Muscles Targeted: Triceps");
+				writeGridCell("", "Close Grip Barbell Press", "Intermediate", "Equipment: Bench, Barbell<br/><br/>Muscles Targeted: Triceps, Chest, Shoulders");
+				writeGridCell("", "EZ-Bar Skullcrusher", "Intermediate", "Equipment: Bench, EZ-Bar<br/><br/>Muscles Targeted: Triceps");
+				writeGridCell("", "Dumbbell Skullcrusher", "Intermediate", "Equipment: Bench, Dumbbells<br/><br/>Muscles Targeted: Triceps");
 				closeGridContainer();
 				document.getElementById(id).innerHTML = gridHTML;
 			} else if (group == "abs") {
 				openGridContainer();
-				writeGridCell("", "Flutter Kicks", "Beginner", "More");
-				writeGridCell("", "Plank", "Beginner", "More");
-				writeGridCell("", "Cross-Body Crunch", "Beginner", "More");
-				writeGridCell("", "Russian Twist", "Beginner", "More");
-				writeGridCell("", "Cable Crunch", "Beginner", "More");
-				writeGridCell("", "Knee Raises", "Beginner", "More");
-				writeGridCell("", "Cable Woodchop", "Beginner", "More");
-				writeGridCell("", "Ab Rotator", "Beginner", "More");
-				writeGridCell("", "Crunch Machine", "Beginner", "More");
-				writeGridCell("", "Leg Raises", "Intermediate", "More");
-				writeGridCell("", "Ab Roller", "Advanced", "More");
-				writeGridCell("", "Decline Reverse Crunch", "Advanced", "More");
+				writeGridCell("", "Flutter Kicks", "Beginner", "Equipment: None<br/><br/>Muscles Targeted: Lower Abs");
+				writeGridCell("", "Plank", "Beginner", "Equipment: None<br/><br/>Muscles Targeted: Abs");
+				writeGridCell("", "Cross-Body Crunch", "Beginner", "Equipment: None<br/><br/>Muscles Targeted: Abs, Obliques");
+				writeGridCell("", "Russian Twist", "Beginner", "Equipment: None<br/><br/>Muscles Targeted: Abs, Obliques");
+				writeGridCell("", "Cable Crunch", "Beginner", "Equipment: Cables<br/><br/>Muscles Targeted: Abs");
+				writeGridCell("", "Knee Raises", "Beginner", "Equipment: Dip Station<br/><br/>Muscles Targeted: Abs");
+				writeGridCell("", "Cable Woodchop", "Beginner", "Equipment: Cables<br/><br/>Muscles Targeted: Abs, Obliques");
+				writeGridCell("", "Ab Rotator", "Beginner", "Equipment: Machine<br/><br/>Muscles Targeted: Abs, Obliques");
+				writeGridCell("", "Crunch Machine", "Beginner", "Equipment: Machine<br/><br/>Muscles Targeted: Abs");
+				writeGridCell("", "Leg Raises", "Intermediate", "Equipment: Dip Station<br/><br/>Muscles Targeted: Abs");
+				writeGridCell("", "Ab Roller", "Advanced", "Equipment: Ab Roller<br/><br/>Muscles Targeted: Abs");
+				writeGridCell("", "Decline Reverse Crunch", "Advanced", "Equipment: Decline Bench<br/><br/>Muscles Targeted: Lower Abs");
 				closeGridContainer();
 				document.getElementById(id).innerHTML = gridHTML;
 			} else if (group == "legs") {
 				openGridContainer();
-				writeGridCell("", "Dumbbell Lunges", "Beginner", "More");
-				writeGridCell("", "Lying Leg Curls", "Beginner", "More");
-				writeGridCell("", "Leg Extensions", "Beginner", "More");
-				writeGridCell("", "Standing Calf Raise", "Beginner", "More");
-				writeGridCell("", "Hack Squat", "Beginner", "More");
-				writeGridCell("", "Seated Calf Raise", "Beginner", "More");
-				writeGridCell("", "Calf Press", "Beginner", "More");
-				writeGridCell("", "Seated Leg Curl", "Beginner", "More");
-				writeGridCell("", "Barbell Squats", "Intermediate", "More");
+				writeGridCell("", "Dumbbell Lunges", "Beginner", "Equipment: Dumbbells<br/><br/>Muscles Targeted: Hamstrings, Quads, Glutes");
+				writeGridCell("", "Lying Leg Curls", "Beginner", "Equipment: Machine<br/><br/>Muscles Targeted: Hamstrings, Glutes");
+				writeGridCell("", "Leg Extensions", "Beginner", "Equipment: Machine<br/><br/>Muscles Targeted: Quads");
+				writeGridCell("", "Standing Calf Raise", "Beginner", "Equipment: Squat Rack/Smith Machine<br/><br/>Muscles Targeted: Calves");
+				writeGridCell("", "Hack Squat", "Beginner", "Equipment: Machine<br/><br/>Muscles Targeted: Hamstrings, Quads, Glutes");
+				writeGridCell("", "Seated Calf Raise", "Beginner", "Equipment: Machine<br/><br/>Muscles Targeted: Calves");
+				writeGridCell("", "Calf Press", "Beginner", "Equipment: Machine<br/><br/>Muscles Targeted: Calves");
+				writeGridCell("", "Seated Leg Curl", "Beginner", "Equipment: Machine<br/><br/>Muscles Targeted: Hamstrings");
+				writeGridCell("", "Barbell Squats", "Intermediate", "Equipment: Squat Rack, Barbell<br/><br/>Muscles Targeted: Hamstrings, Quads, Glutes");
 				closeGridContainer();
 				document.getElementById(id).innerHTML = gridHTML;
 			} else {
