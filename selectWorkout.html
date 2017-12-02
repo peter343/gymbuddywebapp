@@ -2,7 +2,7 @@
 <body>
 <style type="text/css" scoped>
 img.iconImage {
-width:128px;height:128px;margin:0px;border-width:0px;border-color:#000000;border-style:solid;
+width:128px;height:128px;margin:0px;border-width:0px;border-color:#000000;border-style:solid;cursor: pointer;
 }
 
 ul {
@@ -224,8 +224,8 @@ table.workoutTable {
 	<table align="center" border="0" cellpadding="1" cellspacing="1" id="locationTable" style="width:500px;">
 		<tbody>
 			<tr align="center">
-				<td><img id="myimage" src="images/home.png" type="image" onclick="javascript:showMuscleSelection('home')"/></td>
-				<td><img id="myimage" src="images/gym.png" type="image" onclick="javascript:showMuscleSelection('gym')"/></td>
+				<td><img id="myimage" src="images/home.png" type="image" onclick="javascript:showMuscleSelection('home')" class="iconImage"/></td>
+				<td><img id="myimage" src="images/gym.png" type="image" onclick="javascript:showMuscleSelection('gym')" class="iconImage"/></td>
 			</tr>
 		</tbody>
 	</table>
@@ -323,7 +323,7 @@ table.workoutTable {
 		gridHTML = gridHTML.concat(inten);
 		gridHTML = gridHTML.concat("</div><div class='grid-item3' onclick=\"javascript:addRemoveWorkout('");
 		gridHTML = gridHTML.concat(name);
-		gridHTML = gridHTML.concat("')\">");
+		gridHTML = gridHTML.concat("'); javascript:alertSession()\">");
 		gridHTML = gridHTML.concat("Add to my schedule!");
 
 		gridHTML = gridHTML.concat("</div><div class='grid-item1 dropdown'>More");
@@ -372,7 +372,7 @@ table.workoutTable {
 			} else if (group == "triceps") {
 				openGridContainer();
 				writeGridCell("", "Dips", "Beginner", "Equipment: Chairs/Stools<br/><br/>Muscles Targeted: Triceps, Chest");
-				writeGridCell("", "Bench Dips", "Beginner", "Equipment: Bench/Chair<br/><br/>Muscles Targeted: Triceps, Chest, Shoulders");
+				writeGridCell("", "Bench Dip", "Beginner", "Equipment: Bench/Chair<br/><br/>Muscles Targeted: Triceps, Chest, Shoulders");
 				writeGridCell("", "Close Grip Push-ups", "Beginner", "Equipment: None<br/><br/>Muscles Targeted: Triceps, Chest");
 				closeGridContainer();
 				document.getElementById(id).innerHTML = gridHTML;
@@ -426,7 +426,7 @@ table.workoutTable {
 			} else if (group == "chest") {
 				openGridContainer();
 				writeGridCell("", "Machine Chest Press", "Beginner", "Equipment: Machine<br/><br/>Muscles Targeted: Chest, Triceps, Shoulders<br/><br/>Variations: Flat, Incline, Decline");
-				writeGridCell("", "Chest Dips", "Beginner", "Equipment: Dip Station<br/><br/>Muscles Targeted: Chest, Triceps, Shoulders");
+				writeGridCell("", "Chest Dip", "Beginner", "Equipment: Dip Station<br/><br/>Muscles Targeted: Chest, Triceps, Shoulders");
 				writeGridCell("", "Bench Cable Flies", "Beginner", "Equipment: Cables, Bench<br/><br/>Muscles Targeted: Chest, Triceps, Shoulders");
 				writeGridCell("", "Dumbbell Flies", "Beginner", "Equipment: Dumbbells, Bench<br/><br/>Muscles Targeted: Chest, Triceps, Shoulders<br/><br/>Variations: Flat, Incline, Decline");
 				writeGridCell("", "Dumbbell Pullover", "Beginner", "Equipment: Dumbbell, Bench<br/><br/>Muscles Targeted: Chest, Triceps, Shoulders");
@@ -465,7 +465,7 @@ table.workoutTable {
 			} else if (group == "triceps") {
 				openGridContainer();
 				writeGridCell("", "Dip Machine", "Beginner", "Equipment: Machine<br/><br/>Muscles Targeted: Triceps, Chest");
-				writeGridCell("", "Bench Dips", "Beginner", "Equipment: Bench<br/><br/>Muscles Targeted: Triceps, Chest, Shoulders");
+				writeGridCell("", "Bench Dip", "Beginner", "Equipment: Bench<br/><br/>Muscles Targeted: Triceps, Chest, Shoulders");
 				writeGridCell("", "Dips", "Beginner", "Equipment: Dip Station<br/><br/>Muscles Targeted: Triceps, Chest");
 				writeGridCell("", "Dumbbell Kickbacks", "Beginner", "Equipment: Bench<br/><br/>Muscles Targeted: Triceps<br/><br/>Variations: Dumbbell, Cable");
 				writeGridCell("", "Triceps Push Down", "Beginner", "Equipment: Chairs/Stools<br/><br/>Muscles Targeted: Triceps<br/><br/>Variations: Rope, Bar, V-Bar");
@@ -525,6 +525,7 @@ table.workoutTable {
 		}
 		document.getElementById("testAdding").innerHTML = selectedWorkouts;
 	}
+
 
 
 </script>
