@@ -5,13 +5,25 @@ img.iconImage {
 width:128px;height:128px;margin:0px;border-width:0px;border-color:#000000;border-style:solid;cursor: pointer;
 }
 
-ul {
+ul.top {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: #333;
     align-items: center;
+}
+
+ul.bottom {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: auto;
 }
 
 li {
@@ -210,7 +222,7 @@ table.workoutTable {
 
 
 </style>
-<ul>
+<ul class="top">
   <li><a class="active" href="selectWorkout.html"><p class="standardFont" style="margin-top: 5px; margin-bottom: 5px;">Build A Schedule</p></a></li>
   <li><a href="viewWorkout.html"><p class="standardFont" style="margin-top: 5px; margin-bottom: 5px;">View Your Schedule</p></a></li>
 </ul>
@@ -259,6 +271,10 @@ table.workoutTable {
 	</div>
 <div id="workoutDiv" class="sectionBar hidden" style="margin-bottom: 30"><h1 class="sectionText">Pick Your Workouts!</h1></div>
 <div id="workouts" style="margin-bottom: 140"></div>
+<ul class="bottom">
+  <!-- <li><a class="active" href="selectWorkout.html"><p class="standardFont" style="margin-top: 5px; margin-bottom: 5px;">Build A Schedule</p></a></li> -->
+  <li><a href="example.php"><p class="standardFont" style="margin-top: 5px; margin-bottom: 5px;">Submit Your Schedule!</p></a></li>
+</ul>
 
 <p id="testAdding"></p>
 <script type="text/javascript">
