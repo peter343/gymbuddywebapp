@@ -5,35 +5,6 @@ img.iconImage {
 width:128px;height:128px;margin:0px;border-width:0px;border-color:#000000;border-style:solid;
 }
 
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-    align-items: center;
-}
-
-li {
-    float: left;
-}
-
-li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-li a:hover:not(.active) {
-    background-color: #111;
-}
-
-.active {
-    background-color: #4CAF50;
-}
-
 .hidden {
 	display: none;
 }
@@ -146,7 +117,6 @@ li a:hover:not(.active) {
     font-size: small;
     text-align: center;
     vertical-align: middle;
-    cursor: pointer;
 }
 
 div.sectionBar {
@@ -210,17 +180,11 @@ table.workoutTable {
 
 
 </style>
-<ul>
-  <li><a class="active" href="selectWorkout.html"><p class="standardFont" style="margin-top: 5px; margin-bottom: 5px;">Build A Schedule</p></a></li>
-  <li><a href="viewWorkout.html"><p class="standardFont" style="margin-top: 5px; margin-bottom: 5px;">View Your Schedule</p></a></li>
-</ul>
-
-
 	<p id="loc" class="hidden" title=""></p>
-	<div class="sectionBar"><h1 class="sectionText">Choose a Workout Location:</h1>
+	<div class="sectionBar"><h1 class="sectionText">Home Page</h1>
 	</div>
 
-	<div id="locationTableDiv" class="unhidden">
+	<!-- <div id="locationTableDiv" class="unhidden">
 	<table align="center" border="0" cellpadding="1" cellspacing="1" id="locationTable" style="width:500px;">
 		<tbody>
 			<tr align="center">
@@ -229,8 +193,9 @@ table.workoutTable {
 			</tr>
 		</tbody>
 	</table>
-	</div>
-	<div id="muscleDiv" class="sectionBar hidden"><h1 class="sectionText">Select a Muscle Group:</h1></div>
+	</div> -->
+
+	<!-- <div id="muscleDiv" class="sectionBar hidden"><h1 class="sectionText">Select a Muscle Group:</h1></div>
 	<div id="muscleDivTable" class="hidden">
 		<table align="center" border="0" cellpadding="1" cellspacing="1" id="muscleTable" style="width:1000px">
 			<tbody>
@@ -258,10 +223,9 @@ table.workoutTable {
 		</table>
 	</div>
 <div id="workoutDiv" class="sectionBar hidden" style="margin-bottom: 30"><h1 class="sectionText">Pick Your Workouts!</h1></div>
-<div id="workouts" style="margin-bottom: 140"></div>
+<div id="workouts" style="margin-bottom: 140"></div> -->
 
-<p id="testAdding"></p>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     function unhide(divID, otherDivId) {
     	var div1 = document.getElementById(divID);
     	var div2 = document.getElementById(otherDivId);
@@ -272,9 +236,9 @@ table.workoutTable {
         	document.getElementById(otherDivId).className = 'hidden';
     	}
     }
-</script>
+</script> -->
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	function showMuscleSelection(loc) {
 		var muscleDiv = document.getElementById('muscleDiv');
 		var muscleDivTable = document.getElementById('muscleDivTable');
@@ -294,21 +258,21 @@ table.workoutTable {
 			muscleDiv.className=(muscleDiv.className=='sectionBar hidden')?'sectionBar unhidden':'sectionBar uhidden'; //'sectionBar hidden';
 		}
 	}
-</script>
+</script> -->
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	var gridHTML = "";
 	function openGridContainer() {
 		gridHTML = "";
 		gridHTML = gridHTML.concat("</div><div class='grid-container'>");
 	}
 
-  function writeGridCell(gif, name, inten, more) {
+	function writeGridCell(gif, name, inten, more) {
 		gridHTML = gridHTML.concat("<div class='grid-cell'>");
 		gridHTML = gridHTML.concat("<div class='grid-item-title'>");
 		gridHTML = gridHTML.concat(name);
 		// gridHTML = gridHTML.concat(gif);
-		gridHTML = gridHTML.concat("</div><div class='grid-item' \">");
+		gridHTML = gridHTML.concat("</div><div class='grid-item'>");
 		gridHTML = gridHTML.concat(gif);
 		// gridHTML = gridHTML.concat(name);
 		if (inten == "Beginner") {
@@ -321,11 +285,6 @@ table.workoutTable {
 			gridHTML = gridHTML.concat("</div><div class='grid-item'>");
 		}
 		gridHTML = gridHTML.concat(inten);
-		gridHTML = gridHTML.concat("</div><div class='grid-item3' onclick=\"javascript:addRemoveWorkout('");
-		gridHTML = gridHTML.concat(name);
-		gridHTML = gridHTML.concat("')\">");
-		gridHTML = gridHTML.concat("Add to my schedule!");
-
 		gridHTML = gridHTML.concat("</div><div class='grid-item1 dropdown'>More");
 		gridHTML = gridHTML.concat("<div class='dropdown-content moreText'>");
 		gridHTML = gridHTML.concat(more);
@@ -510,24 +469,7 @@ table.workoutTable {
 		}
 	}
 
-</script>
-
-<script type="text/javascript">
-	var selectedWorkouts = "";
-
-	function addRemoveWorkout(workout) {
-		if (selectedWorkouts == "") {
-			selectedWorkouts = workout.concat("^");
-		} else if (selectedWorkouts.indexOf(workout) != -1) {
-			selectedWorkouts = selectedWorkouts.replace(workout.concat("^"), "");
-		} else {
-			selectedWorkouts = selectedWorkouts.concat(workout.concat("^"));
-		}
-		document.getElementById("testAdding").innerHTML = selectedWorkouts;
-	}
-
-
-</script>
+</script> -->
 
 </body>
 </html>
