@@ -5,6 +5,35 @@ img.iconImage {
 width:128px;height:128px;margin:0px;border-width:0px;border-color:#000000;border-style:solid;
 }
 
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    align-items: center;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+
 .hidden {
 	display: none;
 }
@@ -180,6 +209,12 @@ table.workoutTable {
 
 
 </style>
+<ul>
+  <li><a class="active" href="selectWorkout.html"><p class="standardFont" style="margin-top: 5px; margin-bottom: 5px;">Build A Schedule</p></a></li>
+  <li><a href="viewWorkout.html"><p class="standardFont" style="margin-top: 5px; margin-bottom: 5px;">View Your Schedule</p></a></li>
+</ul>
+
+
 	<p id="loc" class="hidden" title=""></p>
 	<div class="sectionBar"><h1 class="sectionText">Choose a Workout Location:</h1>
 	</div>
@@ -194,7 +229,6 @@ table.workoutTable {
 		</tbody>
 	</table>
 	</div>
-
 	<div id="muscleDiv" class="sectionBar hidden"><h1 class="sectionText">Select a Muscle Group:</h1></div>
 	<div id="muscleDivTable" class="hidden">
 		<table align="center" border="0" cellpadding="1" cellspacing="1" id="muscleTable" style="width:1000px">

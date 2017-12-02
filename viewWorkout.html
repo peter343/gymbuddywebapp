@@ -1,0 +1,266 @@
+<html>
+<body>
+<style type="text/css" scoped>
+img.iconImage {
+width:128px;height:128px;margin:0px;border-width:0px;border-color:#000000;border-style:solid;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    align-items: center;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+
+.hidden {
+	display: none;
+}
+
+.unhidden {
+	display: block;
+}
+
+.grid-container {
+	display: grid;
+	grid-template-columns: 196px 196px 196px 196px;/*auto auto auto auto;*/
+	justify-content: center;
+	padding: 10px;
+	grid-gap: 50px;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+.grid-cell {
+	display: grid;
+	grid-template-columns: 196px;
+	grid-template-rows: 24px 196px 24px 24px;
+	text-align: center;
+	vertical-align: middle;
+	grid-gap: 1px;
+}
+
+.grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    vertical-align: middle;
+}
+
+.grid-item-title {
+	background-color: #ffffff;
+	color: black;
+    padding: 4px;
+    font-family: Helvetica;
+    font-size: small;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+}
+.grid-item1 {
+	background-color: #0099ff;
+    background-image: radial-gradient(
+		#4db8ff,
+		#008ae6
+	);
+	color: white;
+	text-shadow: 1px 1px 1px black;
+    padding: 4px;
+    font-family: Helvetica;
+    font-size: small;
+    text-align: center;
+    vertical-align: middle;
+}
+.grid-item2-B {
+	background-color: #00cc00;
+    background-image: radial-gradient(
+		#4dff4d,
+		#00cc00
+	);
+    color: white;
+	text-shadow: 1px 1px 1px black;
+    padding: 4px;
+    font-family: Helvetica;
+    font-size: small;
+    text-align: center;
+    vertical-align: middle;
+}
+.grid-item2-I {
+	background-color: #ffff00;
+    background-image: radial-gradient(
+		#ffff66,
+		#cccc00
+	);
+	color: white;
+	text-shadow: 1px 1px 1px black;
+    padding: 4px;
+    font-family: Helvetica;
+    font-size: small;
+    text-align: center;
+    vertical-align: middle;
+}
+.grid-item2-A {
+	background-color: #ff3333;
+    background-image: radial-gradient(
+		#ff6666,
+		#ff3333
+	);
+	color: white;
+	text-shadow: 1px 1px 1px black;
+    padding: 4px;
+    font-family: Helvetica;
+    font-size: small;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.grid-item3 {
+	background-color: #b300b3;
+    background-image: radial-gradient(
+		#ff00ff,
+		#b300b3
+	);
+	color: white;
+	text-shadow: 1px 1px 1px black;
+    padding: 4px;
+    font-family: Helvetica;
+    font-size: small;
+    text-align: center;
+    vertical-align: middle;
+}
+
+div.sectionBar {
+	width: 100%;
+	height: 7%;
+	background-color: #555;
+	overflow: auto;
+	text-align: center;
+	line-height: 55%;
+    font-family: Helvetica;
+    font-size: medium;
+}
+
+body {margin:0;}
+
+.sectionText {
+	color: #FFF;
+}
+
+table.workoutTable {
+	width: 100%;
+	height: 50%;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.standardFont {
+	font-family: Helvetica;
+}
+.smallFont {
+	font-size: small;
+}
+
+.moreText {
+	font-family:  Helvetica;
+	font-size: small;
+	font-weight: normal;
+	color: black;
+	text-shadow: 0px 0px 0px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+    text-align: left;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+</style>
+<ul>
+  <li><a href="selectWorkout.html"><p class="standardFont" style="margin-top: 5px; margin-bottom: 5px;">Build A Schedule</p></a></li>
+  <li><a class="active" href="viewWorkout.html"><p class="standardFont" style="margin-top: 5px; margin-bottom: 5px;">View Your Schedule</p></a></li>
+</ul>
+<!-- 
+
+	<p id="loc" class="hidden" title=""></p>
+	<div class="sectionBar"><h1 class="sectionText">Choose a Workout Location:</h1>
+	</div>
+
+	<div id="locationTableDiv" class="unhidden">
+	<table align="center" border="0" cellpadding="1" cellspacing="1" id="locationTable" style="width:500px;">
+		<tbody>
+			<tr align="center">
+				<td><img id="myimage" src="images/home.png" type="image" onclick="javascript:showMuscleSelection('home')"/></td>
+				<td><img id="myimage" src="images/gym.png" type="image" onclick="javascript:showMuscleSelection('gym')"/></td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+	<div id="muscleDiv" class="sectionBar hidden"><h1 class="sectionText">Select a Muscle Group:</h1></div>
+	<div id="muscleDivTable" class="hidden">
+		<table align="center" border="0" cellpadding="1" cellspacing="1" id="muscleTable" style="width:1000px">
+			<tbody>
+				<tr><td align="center" colspan="7" height="20px"></td></tr>
+				<tr align="center">
+					<td><img id="myimage" src="images/Shoulder.gif" type="image" onclick="javascript:showWorkoutsFor('shoulders', 'workouts')" class="iconImage"/></td>
+					<td><img id="myimage" src="images/Chest.gif" type="image" onclick="javascript:showWorkoutsFor('chest', 'workouts')" class="iconImage"/></td>
+					<td><img id="myimage" src="images/Biceps.gif" type="image" onclick="javascript:showWorkoutsFor('biceps', 'workouts')" class="iconImage"/></td>
+					<td><img id="myimage" src="images/Triceps.gif" type="image" onclick="javascript:showWorkoutsFor('triceps', 'workouts')" class="iconImage"/></td>
+					<td><img id="myimage" src="images/Back.gif" type="image" onclick="javascript:showWorkoutsFor('back', 'workouts')" class="iconImage"/></td>
+					<td><img id="myimage" src="images/Abs.gif" type="image" onclick="javascript:showWorkoutsFor('abs', 'workouts')" class="iconImage"/></td>
+					<td><img id="myimage" src="images/Legs.gif" type="image" onclick="javascript:showWorkoutsFor('legs', 'workouts')" class="iconImage"/></td>
+				</tr>
+				<tr>
+					<td align="center" class="standardFont smallFont">SHOULDERS</td>
+					<td align="center" class="standardFont smallFont">CHEST</td>
+					<td align="center" class="standardFont smallFont">BICEPS</td>
+					<td align="center" class="standardFont smallFont">TRICEPS</td>
+					<td align="center" class="standardFont smallFont">BACK</td>
+					<td align="center" class="standardFont smallFont">ABS</td>
+					<td align="center" class="standardFont smallFont">LEGS</td>
+				</tr>
+				<tr><td align="center" colspan="7" height="20px"></td></tr>
+			</tbody>
+		</table>
+	</div> -->
+<!-- <div id="workoutDiv" class="sectionBar hidden" style="margin-bottom: 30"><h1 class="sectionText">Pick Your Workouts!</h1></div> -->
+
+<div id="workouts" style="margin-bottom: 140"><span><?php include('example.php');?></span>
+</div>
+
+
+</body>
+</html>
