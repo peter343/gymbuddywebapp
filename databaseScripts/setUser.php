@@ -32,12 +32,9 @@ if ($conn->query($sql) === TRUE) {
       window.location.href='https://gymbuddyapp.net/gymBuddy/';
       </script>";
       }else {
-        //header("location: https://gymbuddyapp.net/gymBuddy/selectWorkout.html");
-        echo "<script>
-        alert('logged in Successfully');
-        window.location.href='https://gymbuddyapp.net/gymBuddy/selectWorkout.html';
-        </script>";
-        $_SESSION['logged_in'] = 1;
+        $_SESSION['Username'] = $name;
+        header("location: https://gymbuddyapp.net/gymBuddy/selectWorkout.html");
+
       }
     //echo "Error: " . $sql . "<br>" . $conn->error;
 }
