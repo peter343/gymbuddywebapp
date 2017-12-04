@@ -271,9 +271,9 @@ table.workoutTable {
 	</div>
 <div id="workoutDiv" class="sectionBar hidden" style="margin-bottom: 30"><h1 class="sectionText">Pick Your Workouts!</h1></div>
 <div id="workouts" style="margin-bottom: 140"></div>
-<ul class="bottom">
+<ul class="bottom hidden" id="submitButton">
   <!-- <li><a class="active" href="selectWorkout.html"><p class="standardFont" style="margin-top: 5px; margin-bottom: 5px;">Build A Schedule</p></a></li> -->
-  <li><a href="example.php"><p class="standardFont" style="margin-top: 5px; margin-bottom: 5px;">Submit Your Schedule!</p></a></li>
+  <li><a id="submitForm" href="example.php"><p class="standardFont" style="margin-top: 5px; margin-bottom: 5px;">Submit Your Schedule!</p></a></li>
 </ul>
 
 <p id="testAdding"></p>
@@ -540,6 +540,15 @@ table.workoutTable {
 			selectedWorkouts = selectedWorkouts.concat(workout.concat("^"));
 		}
 		document.getElementById("testAdding").innerHTML = selectedWorkouts;
+    if(selectedWorkouts == "") {
+      document.getElementById("submitButton").className = "bottom hidden";
+      document.getElementById("submitForm").href = "example.php?";  // ask sultan about "?"
+    }
+    else {
+      document.getElementById("submitButton").className = "bottom unhidden";
+      document.getElementById("submitForm").href = "example.php?";  // ask sultan about "?"
+      document.getElementById("submitForm").href = document.getElementById("submitForm").href.concat(selectedWorkouts);
+    }
 	}
 
 
