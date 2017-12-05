@@ -542,12 +542,14 @@ table.workoutTable {
 		document.getElementById("testAdding").innerHTML = selectedWorkouts;
     if(selectedWorkouts == "") {
       document.getElementById("submitButton").className = "bottom hidden";
-      document.getElementById("submitForm").href = "/gymBuddy/cgi-bin/setExercises.php?";  // ask sultan about "?"
+      document.getElementById("submitForm").href = "/gymBuddy/cgi-bin/setExercises.php?exercises=";  // ask sultan about "?"
     }
     else {
       document.getElementById("submitButton").className = "bottom unhidden";
-      document.getElementById("submitForm").href = "/gymBuddy/cgi-bin/setExercises.php?";  // ask sultan about "?"
+      document.getElementById("submitForm").href = "/gymBuddy/cgi-bin/setExercises.php?exercises=";  // ask sultan about "?"
       document.getElementById("submitForm").href = document.getElementById("submitForm").href.concat(selectedWorkouts);
+      document.getElementById("submitForm").href = document.getElementById("submitForm").href.slice(0, -1);
+      document.getElementById("submitForm").href = encodeURI(document.getElementById("submitForm").href)
     }
 	}
 
