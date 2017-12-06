@@ -526,6 +526,7 @@ table.workoutTable {
 				writeGridCell("", "Standing Calf Raise", "Beginner", "Equipment: Squat Rack/Smith Machine<br/><br/>Muscles Targeted: Calves");
 				writeGridCell("", "Seated Calf Raise", "Beginner", "Equipment: Machine<br/><br/>Muscles Targeted: Calves");
 				writeGridCell("", "Calf Press", "Beginner", "Equipment: Machine<br/><br/>Muscles Targeted: Calves");
+				writeGridCell("", "Leg Press", "Beginner", "Equipment: Machine<br/><br/>Muscles Targeted: Hamstrings, Quads, Glutes");
 				writeGridCell("", "Barbell Squats", "Intermediate", "Equipment: Squat Rack, Barbell<br/><br/>Muscles Targeted: Hamstrings, Quads, Glutes");
 				closeGridContainer();
 				document.getElementById(id).innerHTML = gridHTML;

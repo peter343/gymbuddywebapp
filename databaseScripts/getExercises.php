@@ -114,7 +114,7 @@ if($count > 0){
     //echo "Error: " . $sql . "<br>" . mysqli_error($conn);
   }
 }else{
-echo "<p> no workouts found for user :".$_SESSION['Username']." </p>";
+echo "<p> No workouts found for user :".$_SESSION['Username']." </p>";
 }
 //Close connections
 mysqli_close($con);
