@@ -76,8 +76,35 @@ if($count > 0){
   		// Add each row into our results array
   		$tempArray = $row;
         //print_r($row);
-        printExer($row->name , $row->img_path ,$row->intensity ,$row->more );
+          if($row->intensity == "Beginner")
+          {
+            printExer($row->name , $row->img_path ,$row->intensity ,$row->more );
   	    array_push($resultArray, $tempArray);
+          }
+  	}
+  	$result = mysqli_query($con, $sql);
+  	while($row = $result->fetch_object())
+  	{
+  		// Add each row into our results array
+  		$tempArray = $row;
+        //print_r($row);
+          if($row->intensity == "Intermediate")
+          {
+            printExer($row->name , $row->img_path ,$row->intensity ,$row->more );
+  	    array_push($resultArray, $tempArray);
+          }
+  	}
+  	$result = mysqli_query($con, $sql);
+        while($row = $result->fetch_object())
+  	{
+  		// Add each row into our results array
+  		$tempArray = $row;
+        //print_r($row);
+          if($row->intensity == "Advanced")
+          {
+            printExer($row->name , $row->img_path ,$row->intensity ,$row->more );
+  	    array_push($resultArray, $tempArray);
+          }
   	}
   	echo "</div>";
 
