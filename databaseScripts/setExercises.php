@@ -3,9 +3,10 @@ $servername = "localhost";
 $username = "gymbudd1_UVAdmin";
 $password = "Bo56H!m&";
 $dbname = "gymbudd1_webApp";
+session_start();
+$exercises = $_GET['exercises'];
+$name = $_SESSION['Username'];
 
-$exercises = $_POST['exercises'];
-$name = $_SESSION['username'];
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -14,12 +15,12 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "UPDATE user set exercises = '$exercises' where name = $name";
+$sql = "UPDATE user set exercises = '$exercises' where name = '".$_SESSION['Username']."'";
 
 if ($conn->query($sql) === TRUE) {
     echo "<script>
-    alert('Exercises are set.');
-    window.location.href='https://gymbuddyapp.net/gymBuddy/';
+    alert('Your schedule is ready.');
+    window.location.href='https://gymbuddyapp.net/gymBuddy/viewWorkout.php';
     </script>";
 } else {
   echo "Error: " . $sql . "<br>" . mysqli_error($conn);

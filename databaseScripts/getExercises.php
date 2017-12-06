@@ -5,10 +5,13 @@ function printExer($name , $gif ,$inten ,$more ){
   $gridHTML .= "<div class='grid-item-title'>";
   $gridHTML .= $name;
   // $gridHTML .= gif;
-  $gridHTML .= "</div><div class='grid-item' onclick=\"javascript:addRemoveWorkout('";
+
+  $gridHTML .= "</div><div class='grid-item'>";
+  $gridHTML .= "<img src=\"";
+  $gridHTML .= "/gymBuddy/htdocs/images/";
   $gridHTML .= $name;
-  $gridHTML .= "')\">" ;
-  $gridHTML .= $gif ;
+  $gridHTML .= ".gif\" style=\"width:100%;height:100%;\"/>";
+  //$gridHTML .= $gif ;
   // $gridHTML .= name ;
   if ($inten == "Beginner")  {
     $gridHTML .= "</div><div class='grid-item2-B'>" ;
@@ -33,21 +36,23 @@ $name = $_POST['Username'];
 // Check connection
 if (mysqli_connect_errno())
 {
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+  //echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
-echo "Name : $name\n";
-$sql = "SELECT exercises FROM user where name = '$name' ";
+//echo "Name : ".$_SESSION['Username']."\n";
+$sql = "SELECT exercises FROM user where name = '".$_SESSION['Username']."' ";
 $result = mysqli_query($con, $sql);
   $row = $result->fetch_object();
+  //print_r($row);
   $workout = $row->exercises;
-  echo "workout: $workout";
+  //echo "workout: $workout";
   $nametok = array();
   $tok = strtok($workout, "^");
   while ($tok !== false) {
     array_push($nametok,$tok);
-    echo "$tok\n";
+    //echo "$tok\n";
     $tok = strtok("^");
   }
+  //echo "nametok :$nametok \n";
 // This SQL statement selects ALL from the table Event_Prod
 $sql = "SELECT * FROM workouts where 1 = 0 ";
 $count = count($nametok);
@@ -55,16 +60,16 @@ if($count > 0){
   for ($i = 0; $i < $count; $i++) {
       $sql .= " or name = '$nametok[$i]'";
   }
-  print_r ($nametok);
-  echo "Count : $count\n";
-  echo "SQL : $sql\n";
+  //print_r ($nametok);
+  //echo "Count : $count\n";
+  //echo "SQL : $sql\n";
   if ($result = mysqli_query($con, $sql))
   {
   	// If so, then create a results array and a temporary one
   	// to hold the data
   	$resultArray = array();
   	$tempArray = array();
-
+	echo "</div><div class='grid-container'>";
   	// Loop through each row in the result set
   	while($row = $result->fetch_object())
   	{
@@ -74,14 +79,15 @@ if($count > 0){
         printExer($row->name , $row->img_path ,$row->intensity ,$row->more );
   	    array_push($resultArray, $tempArray);
   	}
+  	echo "</div>";
 
   	// Finally, encode the array to JSON and output the results
   	//echo json_encode($resultArray);
   }else {
-    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    //echo "Error: " . $sql . "<br>" . mysqli_error($conn);
   }
 }else{
-echo "<p> no workouts found </p>";
+echo "<p> no workouts found for user :".$_SESSION['Username']." </p>";
 }
 //Close connections
 mysqli_close($con);

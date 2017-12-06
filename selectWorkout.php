@@ -1,3 +1,13 @@
+<?php
+header('Cache-Control: no-cache, no-store, must-revalidate');
+header('Pragma: no-cache');
+header('Expires: 0');
+session_start();
+if (!isset($_SESSION['Username'])){
+    header("Location: https://gymbuddyapp.net/gymBuddy/");
+    //exit;
+}
+?>
 <html>
 <body>
 <style type="text/css" scoped>
@@ -219,12 +229,16 @@ table.workoutTable {
 .dropdown:hover .dropdown-content {
     display: block;
 }
+.dropdown:onclick .dropdown-content {
+    display: block;
+}
 
 
 </style>
 <ul class="top">
-  <li><a class="active" href="selectWorkout.html"><p class="standardFont" style="margin-top: 5px; margin-bottom: 5px;">Build A Schedule</p></a></li>
-  <li><a href="viewWorkout.html"><p class="standardFont" style="margin-top: 5px; margin-bottom: 5px;">View Your Schedule</p></a></li>
+  <li><a class="active" href="selectWorkout.php"><p class="standardFont" style="margin-top: 5px; margin-bottom: 5px;">Build A Schedule</p></a></li>
+  <li><a href="viewWorkout.php"><p class="standardFont" style="margin-top: 5px; margin-bottom: 5px;">View Your Schedule</p></a></li>
+   <li><a href="/gymBuddy/cgi-bin/logout.php"><p class="standardFont" style="align-self: right; margin-top: 5px; margin-bottom: 5px;">Logout</p></a></li>
 </ul>
 
 
@@ -236,8 +250,8 @@ table.workoutTable {
 	<table align="center" border="0" cellpadding="1" cellspacing="1" id="locationTable" style="width:500px;">
 		<tbody>
 			<tr align="center">
-				<td><img id="myimage" src="images/home.png" type="image" onclick="javascript:showMuscleSelection('home')" class="iconImage"/></td>
-				<td><img id="myimage" src="images/gym.png" type="image" onclick="javascript:showMuscleSelection('gym')" class="iconImage"/></td>
+				<td><img id="myimage" src="/gymBuddy/htdocs/images/home.png" type="image" onclick="javascript:showMuscleSelection('home')" class="iconImage"/></td>
+				<td><img id="myimage" src="/gymBuddy/htdocs/images/gym.png" type="image" onclick="javascript:showMuscleSelection('gym')" class="iconImage"/></td>
 			</tr>
 		</tbody>
 	</table>
@@ -248,13 +262,13 @@ table.workoutTable {
 			<tbody>
 				<tr><td align="center" colspan="7" height="20px"></td></tr>
 				<tr align="center">
-					<td><img id="myimage" src="images/Shoulder.gif" type="image" onclick="javascript:showWorkoutsFor('shoulders', 'workouts')" class="iconImage"/></td>
-					<td><img id="myimage" src="images/Chest.gif" type="image" onclick="javascript:showWorkoutsFor('chest', 'workouts')" class="iconImage"/></td>
-					<td><img id="myimage" src="images/Biceps.gif" type="image" onclick="javascript:showWorkoutsFor('biceps', 'workouts')" class="iconImage"/></td>
-					<td><img id="myimage" src="images/Triceps.gif" type="image" onclick="javascript:showWorkoutsFor('triceps', 'workouts')" class="iconImage"/></td>
-					<td><img id="myimage" src="images/Back.gif" type="image" onclick="javascript:showWorkoutsFor('back', 'workouts')" class="iconImage"/></td>
-					<td><img id="myimage" src="images/Abs.gif" type="image" onclick="javascript:showWorkoutsFor('abs', 'workouts')" class="iconImage"/></td>
-					<td><img id="myimage" src="images/Legs.gif" type="image" onclick="javascript:showWorkoutsFor('legs', 'workouts')" class="iconImage"/></td>
+					<td><img id="myimage" src="/gymBuddy/htdocs/images/Shoulder.gif" type="image" onclick="javascript:showWorkoutsFor('shoulders', 'workouts')" class="iconImage"/></td>
+					<td><img id="myimage" src="/gymBuddy/htdocs/images/Chest.gif" type="image" onclick="javascript:showWorkoutsFor('chest', 'workouts')" class="iconImage"/></td>
+					<td><img id="myimage" src="/gymBuddy/htdocs/images/Biceps.gif" type="image" onclick="javascript:showWorkoutsFor('biceps', 'workouts')" class="iconImage"/></td>
+					<td><img id="myimage" src="/gymBuddy/htdocs/images/Triceps.gif" type="image" onclick="javascript:showWorkoutsFor('triceps', 'workouts')" class="iconImage"/></td>
+					<td><img id="myimage" src="/gymBuddy/htdocs/images/Back.gif" type="image" onclick="javascript:showWorkoutsFor('back', 'workouts')" class="iconImage"/></td>
+					<td><img id="myimage" src="/gymBuddy/htdocs/images/Abs.gif" type="image" onclick="javascript:showWorkoutsFor('abs', 'workouts')" class="iconImage"/></td>
+					<td><img id="myimage" src="/gymBuddy/htdocs/images/Legs.gif" type="image" onclick="javascript:showWorkoutsFor('legs', 'workouts')" class="iconImage"/></td>
 				</tr>
 				<tr>
 					<td align="center" class="standardFont smallFont">SHOULDERS</td>
@@ -272,7 +286,7 @@ table.workoutTable {
 <div id="workoutDiv" class="sectionBar hidden" style="margin-bottom: 30"><h1 class="sectionText">Pick Your Workouts!</h1></div>
 <div id="workouts" style="margin-bottom: 140"></div>
 <ul class="bottom hidden" id="submitButton">
-  <!-- <li><a class="active" href="selectWorkout.html"><p class="standardFont" style="margin-top: 5px; margin-bottom: 5px;">Build A Schedule</p></a></li> -->
+  <!-- <li><a class="active" href="selectWorkout.php"><p class="standardFont" style="margin-top: 5px; margin-bottom: 5px;">Build A Schedule</p></a></li> -->
   <li><a id="submitForm" href="/gymBuddy/cgi-bin/setExercises.php"><p class="standardFont" style="margin-top: 5px; margin-bottom: 5px;">Submit Your Schedule!</p></a></li>
 </ul>
 
@@ -323,10 +337,11 @@ table.workoutTable {
 		gridHTML = gridHTML.concat("<div class='grid-cell'>");
 		gridHTML = gridHTML.concat("<div class='grid-item-title'>");
 		gridHTML = gridHTML.concat(name);
-		// gridHTML = gridHTML.concat(gif);
-		gridHTML = gridHTML.concat("</div><div class='grid-item' \">");
-		gridHTML = gridHTML.concat(gif);
-		// gridHTML = gridHTML.concat(name);
+		gridHTML = gridHTML.concat("</div><div class='grid-item'>");
+		gridHTML = gridHTML.concat("<img src=\"");
+		gridHTML = gridHTML.concat("/gymBuddy/htdocs/images/");
+		gridHTML = gridHTML.concat(name);
+		gridHTML = gridHTML.concat(".gif\" style=\"width:100%;height:100%;\"/>");
 		if (inten == "Beginner") {
 			gridHTML = gridHTML.concat("</div><div class='grid-item2-B'>");
 		} else if (inten == "Intermediate") {
@@ -362,12 +377,12 @@ table.workoutTable {
 		if (loc.title == 'home') {
 			if (group == "shoulders") {
 				openGridContainer();
-				writeGridCell("<img src=\"wasted.gif\" style=\"width:100%;height:100%;\">", "Side Lateral Raise", "Beginner", "Equipment: Dumbbells<br/><br/>Muscles Targeted: Deltoid, Trapezius");
-				writeGridCell("<img src=\"wasted.gif\" style=\"width:100%;height:100%;\">", "Shoulder Shrugs", "Beginner", "Equipment: Dumbbells<br/><br/>Muscles Targeted: Trapezius");
-				writeGridCell("<img src=\"wasted.gif\" style=\"width:100%;height:100%;\">", "Bent-Over Rear Delt Raise", "Intermediate", "Equipment: Dumbbells<br/><br/>Muscles Targeted: Deltoid, Trapezius");
-				writeGridCell("<img src=\"wasted.gif\" style=\"width:100%;height:100%;\">", "Arnold Dumbbell Press", "Intermediate", "Equipment: Dumbbells<br/><br/>Muscles Targeted: Deltoid");
-				writeGridCell("<img src=\"wasted.gif\" style=\"width:100%;height:100%;\">", "Elevated Push-Up Off Stairs", "Intermediate", "Equipment: None<br/><br/>Muscles Targeted: Deltoid, Upper Chest, Triceps");
-				writeGridCell("<img src=\"wasted.gif\" style=\"width:100%;height:100%;\">", "Wall Handstand Push-Up", "Advanced", "Equipment: None<br/><br/>Muscles Targeted: Deltoid, Chest, Triceps");
+				writeGridCell("", "Side Lateral Raise", "Beginner", "Equipment: Dumbbells<br/><br/>Muscles Targeted: Deltoid, Trapezius");
+				writeGridCell("", "Shoulder Shrugs", "Beginner", "Equipment: Dumbbells<br/><br/>Muscles Targeted: Trapezius");
+				writeGridCell("", "Bent-Over Rear Delt Raise", "Intermediate", "Equipment: Dumbbells<br/><br/>Muscles Targeted: Deltoid, Trapezius");
+				writeGridCell("", "Arnold Dumbbell Press", "Intermediate", "Equipment: Dumbbells<br/><br/>Muscles Targeted: Deltoid");
+				writeGridCell("", "Elevated Push-Up Off Stairs", "Intermediate", "Equipment: None<br/><br/>Muscles Targeted: Deltoid, Upper Chest, Triceps");
+				writeGridCell("", "Wall Handstand Push-Up", "Advanced", "Equipment: None<br/><br/>Muscles Targeted: Deltoid, Chest, Triceps");
 				closeGridContainer();
 				document.getElementById(id).innerHTML = gridHTML;
 			} else if (group == "chest") {
@@ -394,7 +409,6 @@ table.workoutTable {
 				document.getElementById(id).innerHTML = gridHTML;
 			} else if (group == "back") {
 				openGridContainer();
-				writeGridCell("", "Superman", "Beginner", "Equipment: None<br/><br/>Muscles Targeted: Back");
 				writeGridCell("", "Hyperextensions", "Beginner", "Equipment: Bench/Sofa, Partner<br/><br/>Muscles Targeted: Lower Back");
 				writeGridCell("", "Pull-ups", "Intermediate", "Equipment: Pull Up Bar<br/><br/>Muscles Targeted: Biceps, Back");
 				closeGridContainer();
@@ -415,7 +429,7 @@ table.workoutTable {
 				writeGridCell("", "Wall Squat", "Beginner", "Equipment: None<br/><br/>Muscles Targeted: Quads, Glutes, Calves");
 				writeGridCell("", "Standing Calf Raises", "Beginner", "Equipment: None<br/><br/>Muscles Targeted: Calves");
 				writeGridCell("", "Jump Squats", "Intermediate", "Equipment: None<br/><br/>Muscles Targeted: Hamstrings, Quads, Glutes");
-				writeGridCell("", "Box Jump ", "Intermediate", "Equipment: None<br/><br/>Muscles Targeted: Hamstrings, Quads, Glutes, Calves");
+				writeGridCell("", "Box Jump", "Intermediate", "Equipment: None<br/><br/>Muscles Targeted: Hamstrings, Quads, Glutes, Calves");
 				writeGridCell("", "Burpees", "Intermediate", "Equipment: None<br/><br/>Muscles Targeted: Hamstrings, Quads, Glutes, Chest, Arms, Abs");
 				closeGridContainer();
 				document.getElementById(id).innerHTML = gridHTML;
@@ -442,8 +456,6 @@ table.workoutTable {
 			} else if (group == "chest") {
 				openGridContainer();
 				writeGridCell("", "Machine Chest Press", "Beginner", "Equipment: Machine<br/><br/>Muscles Targeted: Chest, Triceps, Shoulders<br/><br/>Variations: Flat, Incline, Decline");
-				writeGridCell("", "Chest Dip", "Beginner", "Equipment: Dip Station<br/><br/>Muscles Targeted: Chest, Triceps, Shoulders");
-				writeGridCell("", "Bench Cable Flies", "Beginner", "Equipment: Cables, Bench<br/><br/>Muscles Targeted: Chest, Triceps, Shoulders");
 				writeGridCell("", "Dumbbell Flies", "Beginner", "Equipment: Dumbbells, Bench<br/><br/>Muscles Targeted: Chest, Triceps, Shoulders<br/><br/>Variations: Flat, Incline, Decline");
 				writeGridCell("", "Dumbbell Pullover", "Beginner", "Equipment: Dumbbell, Bench<br/><br/>Muscles Targeted: Chest, Triceps, Shoulders");
 				writeGridCell("", "Cable Flies", "Beginner", "Equipment: Cables<br/><br/>Muscles Targeted: Chest, Triceps, Shoulders<br/><br/>Variations: Low Pulley, High Pulley");
@@ -473,7 +485,7 @@ table.workoutTable {
 				writeGridCell("", "Overhead Cable Curls", "Beginner", "Equipment: Cables<br/><br/>Muscles Targeted: Biceps");
 				writeGridCell("", "Chin-ups", "Beginner", "Equipment: Pull Up Bar<br/><br/>Muscles Targeted: Biceps, Back");
 				writeGridCell("", "Pull-ups", "Intermediate", "Equipment: Pull Up Bar<br/><br/>Muscles Targeted: Biceps, Back");
-				writeGridCell("", "Standind Barbell Curls", "Intermediate", "Equipment:Barbell<br/><br/>Muscles Targeted: Biceps");
+				writeGridCell("", "Standing Barbell Curls", "Intermediate", "Equipment:Barbell<br/><br/>Muscles Targeted: Biceps");
 				writeGridCell("", "Preacher Curls", "Intermediate", "Equipment: Dumbbells/Bar, Preacher Bench<br/><br/>Muscles Targeted: Biceps");
 				writeGridCell("", "Concentration Curls", "Intermediate", "Equipment: Dumbbell, Bench<br/><br/>Muscles Targeted: Biceps");
 				closeGridContainer();
@@ -487,7 +499,6 @@ table.workoutTable {
 				writeGridCell("", "Triceps Push Down", "Beginner", "Equipment: Chairs/Stools<br/><br/>Muscles Targeted: Triceps<br/><br/>Variations: Rope, Bar, V-Bar");
 				writeGridCell("", "One-Arm Overhead Extension", "Beginner", "Equipment: Dumbbell<br/><br/>Muscles Targeted: Triceps");
 				writeGridCell("", "Close Grip Barbell Press", "Intermediate", "Equipment: Bench, Barbell<br/><br/>Muscles Targeted: Triceps, Chest, Shoulders");
-				writeGridCell("", "EZ-Bar Skullcrusher", "Intermediate", "Equipment: Bench, EZ-Bar<br/><br/>Muscles Targeted: Triceps");
 				writeGridCell("", "Dumbbell Skullcrusher", "Intermediate", "Equipment: Bench, Dumbbells<br/><br/>Muscles Targeted: Triceps");
 				closeGridContainer();
 				document.getElementById(id).innerHTML = gridHTML;
@@ -513,10 +524,8 @@ table.workoutTable {
 				writeGridCell("", "Lying Leg Curls", "Beginner", "Equipment: Machine<br/><br/>Muscles Targeted: Hamstrings, Glutes");
 				writeGridCell("", "Leg Extensions", "Beginner", "Equipment: Machine<br/><br/>Muscles Targeted: Quads");
 				writeGridCell("", "Standing Calf Raise", "Beginner", "Equipment: Squat Rack/Smith Machine<br/><br/>Muscles Targeted: Calves");
-				writeGridCell("", "Hack Squat", "Beginner", "Equipment: Machine<br/><br/>Muscles Targeted: Hamstrings, Quads, Glutes");
 				writeGridCell("", "Seated Calf Raise", "Beginner", "Equipment: Machine<br/><br/>Muscles Targeted: Calves");
 				writeGridCell("", "Calf Press", "Beginner", "Equipment: Machine<br/><br/>Muscles Targeted: Calves");
-				writeGridCell("", "Seated Leg Curl", "Beginner", "Equipment: Machine<br/><br/>Muscles Targeted: Hamstrings");
 				writeGridCell("", "Barbell Squats", "Intermediate", "Equipment: Squat Rack, Barbell<br/><br/>Muscles Targeted: Hamstrings, Quads, Glutes");
 				closeGridContainer();
 				document.getElementById(id).innerHTML = gridHTML;
@@ -548,8 +557,7 @@ table.workoutTable {
       document.getElementById("submitButton").className = "bottom unhidden";
       document.getElementById("submitForm").href = "/gymBuddy/cgi-bin/setExercises.php?exercises=";  // ask sultan about "?"
       document.getElementById("submitForm").href = document.getElementById("submitForm").href.concat(selectedWorkouts);
-      // document.getElementById("submitForm").href = document.getElementById("submitForm").href.slice(0, -1);
-      document.getElementById("submitForm").href = encodeURI(document.getElementById("submitForm").href)
+      document.getElementById("submitForm").href = encodeURLComponent(document.getElementById("submitForm").href.trim());
     }
 	}
 

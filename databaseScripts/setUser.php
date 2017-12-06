@@ -3,7 +3,8 @@ $servername = "localhost";
 $username = "gymbudd1_UVAdmin";
 $password = "Bo56H!m&";
 $dbname = "gymbudd1_webApp";
-
+session_set_cookie_params(0);
+session_start();
 $name = $_POST['name'];
 $password2 = $_POST['password'];
 
@@ -33,7 +34,7 @@ if ($conn->query($sql) === TRUE) {
       </script>";
       }else {
         $_SESSION['Username'] = $name;
-        header("location: https://gymbuddyapp.net/gymBuddy/selectWorkout.html");
+        header("location: https://gymbuddyapp.net/gymBuddy/selectWorkout.php");
 
       }
     //echo "Error: " . $sql . "<br>" . $conn->error;

@@ -1,4 +1,17 @@
+<?php
+header('Cache-Control: no-cache, no-store, must-revalidate');
+header('Pragma: no-cache');
+header('Expires: 0');
+session_start();
+if (!isset($_SESSION['Username'])){
+    header("Location: https://gymbuddyapp.net/gymBuddy/");
+    exit;
+}
+?>
 <html>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+<meta http-equiv="Pragma" content="no-cache"/>
+<meta http-equiv="Expires" content="0"/>
 <body>
 <style type="text/css" scoped>
 img.iconImage {
@@ -210,56 +223,58 @@ table.workoutTable {
 
 </style>
 <ul>
-  <li><a href="selectWorkout.html"><p class="standardFont" style="margin-top: 5px; margin-bottom: 5px;">Build A Schedule</p></a></li>
-  <li><a class="active" href="viewWorkout.html"><p class="standardFont" style="margin-top: 5px; margin-bottom: 5px;">View Your Schedule</p></a></li>
+  <li><a href="selectWorkout.php"><p class="standardFont" style="margin-top: 5px; margin-bottom: 5px;">Build A Schedule</p></a></li>
+  <li><a class="active" href="viewWorkout.php"><p class="standardFont" style="margin-top: 5px; margin-bottom: 5px;">View Your Schedule</p></a></li>
+   <li><a href="/gymBuddy/cgi-bin/logout.php"><p class="standardFont" style="align-self: right; margin-top: 5px; margin-bottom: 5px;">Logout</p></a></li>
 </ul>
-<!-- 
 
-	<p id="loc" class="hidden" title=""></p>
-	<div class="sectionBar"><h1 class="sectionText">Choose a Workout Location:</h1>
-	</div>
+ <div id="workoutDiv" class="sectionBar unhidden" style="margin-bottom: 100"><h1 class="sectionText">Your Workouts!</h1></div>
 
-	<div id="locationTableDiv" class="unhidden">
-	<table align="center" border="0" cellpadding="1" cellspacing="1" id="locationTable" style="width:500px;">
-		<tbody>
-			<tr align="center">
-				<td><img id="myimage" src="images/home.png" type="image" onclick="javascript:showMuscleSelection('home')"/></td>
-				<td><img id="myimage" src="images/gym.png" type="image" onclick="javascript:showMuscleSelection('gym')"/></td>
-			</tr>
-		</tbody>
-	</table>
-	</div>
-	<div id="muscleDiv" class="sectionBar hidden"><h1 class="sectionText">Select a Muscle Group:</h1></div>
-	<div id="muscleDivTable" class="hidden">
-		<table align="center" border="0" cellpadding="1" cellspacing="1" id="muscleTable" style="width:1000px">
-			<tbody>
-				<tr><td align="center" colspan="7" height="20px"></td></tr>
-				<tr align="center">
-					<td><img id="myimage" src="images/Shoulder.gif" type="image" onclick="javascript:showWorkoutsFor('shoulders', 'workouts')" class="iconImage"/></td>
-					<td><img id="myimage" src="images/Chest.gif" type="image" onclick="javascript:showWorkoutsFor('chest', 'workouts')" class="iconImage"/></td>
-					<td><img id="myimage" src="images/Biceps.gif" type="image" onclick="javascript:showWorkoutsFor('biceps', 'workouts')" class="iconImage"/></td>
-					<td><img id="myimage" src="images/Triceps.gif" type="image" onclick="javascript:showWorkoutsFor('triceps', 'workouts')" class="iconImage"/></td>
-					<td><img id="myimage" src="images/Back.gif" type="image" onclick="javascript:showWorkoutsFor('back', 'workouts')" class="iconImage"/></td>
-					<td><img id="myimage" src="images/Abs.gif" type="image" onclick="javascript:showWorkoutsFor('abs', 'workouts')" class="iconImage"/></td>
-					<td><img id="myimage" src="images/Legs.gif" type="image" onclick="javascript:showWorkoutsFor('legs', 'workouts')" class="iconImage"/></td>
-				</tr>
-				<tr>
-					<td align="center" class="standardFont smallFont">SHOULDERS</td>
-					<td align="center" class="standardFont smallFont">CHEST</td>
-					<td align="center" class="standardFont smallFont">BICEPS</td>
-					<td align="center" class="standardFont smallFont">TRICEPS</td>
-					<td align="center" class="standardFont smallFont">BACK</td>
-					<td align="center" class="standardFont smallFont">ABS</td>
-					<td align="center" class="standardFont smallFont">LEGS</td>
-				</tr>
-				<tr><td align="center" colspan="7" height="20px"></td></tr>
-			</tbody>
-		</table>
-	</div> -->
-<!-- <div id="workoutDiv" class="sectionBar hidden" style="margin-bottom: 30"><h1 class="sectionText">Pick Your Workouts!</h1></div> -->
+ 	<?php
+ 		include('/home1/gymbudd1/public_html/gymBuddy/cgi-bin/getExercises.php');
+	?>
 
-<div id="workouts" style="margin-bottom: 140"></div>
-<?php include('example.php');?>
+<script type="text/javascript">
+	var gridHTML = "";
+	function openGridContainer() {
+		gridHTML = "";
+		gridHTML = gridHTML.concat("</div><div class='grid-container'>");
+	}
+
+  function writeGridCell(gif, name, inten, more) {
+		gridHTML = gridHTML.concat("<div class='grid-cell'>");
+		gridHTML = gridHTML.concat("<div class='grid-item-title'>");
+		gridHTML = gridHTML.concat(name);
+		gridHTML = gridHTML.concat("</div><div class='grid-item'>");
+		gridHTML = gridHTML.concat("<img src=\"");
+		gridHTML = gridHTML.concat("/gymBuddy/htdocs/images/");
+		gridHTML = gridHTML.concat(name);
+		gridHTML = gridHTML.concat(".gif\" style=\"width:100%;height:100%;\"/>");
+		if (inten == "Beginner") {
+			gridHTML = gridHTML.concat("</div><div class='grid-item2-B'>");
+		} else if (inten == "Intermediate") {
+			gridHTML = gridHTML.concat("</div><div class='grid-item2-I'>");
+		} else if (inten == "Advanced") {
+			gridHTML = gridHTML.concat("</div><div class='grid-item2-A'>");
+		} else {
+			gridHTML = gridHTML.concat("</div><div class='grid-item'>");
+		}
+		gridHTML = gridHTML.concat(inten);
+		gridHTML = gridHTML.concat("</div><div class='grid-item3' onclick=\"javascript:addRemoveWorkout('");
+		gridHTML = gridHTML.concat(name);
+		gridHTML = gridHTML.concat("'); javascript:alertSession()\">");
+		gridHTML = gridHTML.concat("Add to my schedule!");
+
+		gridHTML = gridHTML.concat("</div><div class='grid-item1 dropdown'>More");
+		gridHTML = gridHTML.concat("<div class='dropdown-content moreText'>");
+		gridHTML = gridHTML.concat(more);
+		gridHTML = gridHTML.concat("</div></div></div>");
+	}
+
+	function closeGridContainer() {
+		gridHTML = gridHTML.concat("</div>");
+	}
+</script>
 
 </body>
 </html>
