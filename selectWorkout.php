@@ -548,7 +548,6 @@ table.workoutTable {
 		} else {
 			selectedWorkouts = selectedWorkouts.concat(workout.concat("^"));
 		}
-		document.getElementById("testAdding").innerHTML = selectedWorkouts;
     if(selectedWorkouts == "") {
       document.getElementById("submitButton").className = "bottom hidden";
       document.getElementById("submitForm").href = "/gymBuddy/cgi-bin/setExercises.php?exercises=";  // ask sultan about "?"
